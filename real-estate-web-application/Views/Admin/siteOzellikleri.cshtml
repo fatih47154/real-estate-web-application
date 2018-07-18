@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "siteOzellikleri";
+    Layout = "~/Views/shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h1><b>Site Özellikleri</b></h1>
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" method="get">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Site Adı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.ad" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">E mail</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.email" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Telefon</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.telefon" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Cep Tel</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.cepTel" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Adres</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.adres" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Hakkımızda</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.hakkimizda" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Misyon</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.misyon" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2">Logo</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="exampleInputFile">
+                        </div>
+
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-info">Submit</button>
+
+                </form>
+            </div>
+        </section>
+
+    </div>
+</div>
+
