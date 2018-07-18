@@ -23,5 +23,12 @@ namespace real_estate_web_application.Controllers
             ViewBag.siteOzellikleri = a;
             return View();
         }
+
+        public ActionResult kullaniciListele()
+        {
+            var kln = db.Kullanicilar.ToList();
+            ViewBag.Kullanicilar = kln;
+            return View();
+        }
     }
 }
