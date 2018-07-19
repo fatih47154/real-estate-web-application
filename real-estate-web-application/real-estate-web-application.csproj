@@ -1777,6 +1777,10 @@
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Veri Tabanı\emlakDB.mdf" />
+    <Content Include="Veri Tabanı\emlakDB_log.ldf">
+      <DependentUpon>emlakDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
