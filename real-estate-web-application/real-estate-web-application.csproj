@@ -2013,7 +2013,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="deneme\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
