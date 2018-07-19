@@ -30,5 +30,13 @@ namespace real_estate_web_application.Controllers
             ViewBag.Kullanicilar = kln;
             return View();
         }
+
+        [HttpPost]
+        public void kullaniciSil(int id)
+        {
+            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
+            db.Kullanicilar.Remove(k);
+            db.SaveChanges();            
+        }
     }
 }
