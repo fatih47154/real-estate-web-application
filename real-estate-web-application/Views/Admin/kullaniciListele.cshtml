@@ -36,7 +36,7 @@
                                 <td>@a.telefon</td>
                                 <td>
                                 <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-                                <a href="#" class="btn btn-danger btn-xs"><i class="icon-trash"></i></a>
+                                <a href="#" class="btn btn-danger btn-xs admSil" data-admid="@a.kullaniciID"><i class="icon-trash"></i></a>
                                 </td>
                             </tr>
                         }
@@ -88,9 +88,12 @@
     </div>
 </div>
 
+
+
 @section script{
     
     <script src="~/Content/Admin/js/jquery-1.8.3.min.js"></script>
+
     <script>
         $(".klnSil").click(function () {
             var sonuc = confirm("Kayıt Silinsin mi?");
@@ -112,9 +115,33 @@
                 alert("Kayıt silme işlemi iptal edildi");
             }
         });
-    </script>    
+    </script> 
+    
+    <script>
+        $(".admSil").click(function () {
+            var sonuc = confirm("Kayıt Silinsin mi?");
+            if (sonuc) {
+                var admID = $(this).data("admid");
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/adminSil/" + admID,
+                    success: function () {
+                        alert("Kayıt Silindi");
+                        window.location.replace("/Admin/kullaniciListele");
+                    },
+                    error: function () {
+                        alert("Kayıt silme sırasında hata oluştu!");
+                    }
+                });
+            }
+            else {
+                alert("Kayıt silme işlemi iptal edildi");
+            }
+        });
+</script>    
     
 }
+
 
 
 

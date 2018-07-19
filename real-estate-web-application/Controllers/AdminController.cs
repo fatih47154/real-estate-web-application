@@ -38,5 +38,13 @@ namespace real_estate_web_application.Controllers
             db.Kullanicilar.Remove(k);
             db.SaveChanges();            
         }
+
+        [HttpPost]
+        public void adminSil(int id)
+        {
+            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
+            db.Kullanicilar.Remove(k);
+            db.SaveChanges();
+        }
     }
 }
