@@ -2115,6 +2115,9 @@
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Admin\konutDuzenle.cshtml" />
+    <Content Include="Views\Home\Kiralik.cshtml" />
+    <Content Include="Views\Home\Satilik.cshtml" />
+    <Content Include="Views\Home\Ilanlar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
