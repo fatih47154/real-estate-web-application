@@ -45,9 +45,6 @@ namespace real_estate_web_application.Models
 
         public bool? takas { get; set; }
 
-        [StringLength(50)]
-        public string cephe { get; set; }
-
         public bool? yanginAlarm { get; set; }
 
         public bool? hirsizAlarm { get; set; }

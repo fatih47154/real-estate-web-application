@@ -24,8 +24,6 @@ namespace real_estate_web_application.Models
         public virtual DbSet<SiteOzellikleri> SiteOzellikleri { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<yorum> yorum { get; set; }
-        public virtual DbSet<arsaDetay> arsaDetay { get; set; }
-        public virtual DbSet<isyeriDetay> isyeriDetay { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

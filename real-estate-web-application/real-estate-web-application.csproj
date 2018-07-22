@@ -1792,12 +1792,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\arsaDetay.cs" />
     <Compile Include="Models\emlakDB.cs" />
     <Compile Include="Models\il.cs" />
     <Compile Include="Models\Ilan.cs" />
     <Compile Include="Models\ilce.cs" />
-    <Compile Include="Models\isyeriDetay.cs" />
     <Compile Include="Models\Kategori.cs" />
     <Compile Include="Models\konutDetay.cs" />
     <Compile Include="Models\Kullanicilar.cs" />

@@ -69,13 +69,16 @@ namespace real_estate_web_application.Controllers
             ViewBag.ilceler = db.ilce.ToList();
             ViewBag.semtler = db.semt.ToList();
             ViewBag.mahalleKoyler = db.mahalle_koy.ToList();
+
             return View();
         }
 
         [HttpPost]
         public ActionResult konutEkle(Ilan ilanVeri,konutDetay detayVeri)
         {
+            db.konutDetay.Add(detayVeri);
             db.Ilan.Add(ilanVeri);
+            db.SaveChanges();
             return RedirectToAction("ilanListele");
         }
     }
