@@ -12,7 +12,7 @@ namespace real_estate_web_application.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public konutDetay()
         {
-            Kategori = new HashSet<Kategori>();
+            Ilan = new HashSet<Ilan>();
         }
 
         [Key]
@@ -121,6 +121,6 @@ namespace real_estate_web_application.Models
         public bool? dubleks { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kategori> Kategori { get; set; }
+        public virtual ICollection<Ilan> Ilan { get; set; }
     }
 }

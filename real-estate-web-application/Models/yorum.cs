@@ -6,20 +6,18 @@ namespace real_estate_web_application.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Mesaj")]
-    public partial class Mesaj
+    [Table("yorum")]
+    public partial class yorum
     {
-        public int? gelenID { get; set; }
-
-        public int? gidenID { get; set; }
-
         [StringLength(10)]
         public string icerik { get; set; }
 
-        public int mesajID { get; set; }
+        public int yorumID { get; set; }
 
-        public virtual Kullanicilar Kullanicilar { get; set; }
+        public bool? onay { get; set; }
 
-        public virtual Kullanicilar Kullanicilar1 { get; set; }
+        public int? ilanID { get; set; }
+
+        public virtual Ilan Ilan { get; set; }
     }
 }

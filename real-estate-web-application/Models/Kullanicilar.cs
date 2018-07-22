@@ -13,8 +13,6 @@ namespace real_estate_web_application.Models
         public Kullanicilar()
         {
             Ilan = new HashSet<Ilan>();
-            Mesaj = new HashSet<Mesaj>();
-            Mesaj1 = new HashSet<Mesaj>();
         }
 
         [Key]
@@ -44,11 +42,5 @@ namespace real_estate_web_application.Models
         public virtual Resim Resim { get; set; }
 
         public virtual SiteOzellikleri SiteOzellikleri { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mesaj> Mesaj { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mesaj> Mesaj1 { get; set; }
     }
 }

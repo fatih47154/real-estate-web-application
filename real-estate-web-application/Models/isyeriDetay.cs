@@ -9,12 +9,6 @@ namespace real_estate_web_application.Models
     [Table("isyeriDetay")]
     public partial class isyeriDetay
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public isyeriDetay()
-        {
-            Kategori = new HashSet<Kategori>();
-        }
-
         [Key]
         public int detayID { get; set; }
 
@@ -91,8 +85,5 @@ namespace real_estate_web_application.Models
         public bool? kanalizasyon { get; set; }
 
         public bool? aritma { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kategori> Kategori { get; set; }
     }
 }

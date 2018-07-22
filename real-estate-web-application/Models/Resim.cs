@@ -12,7 +12,6 @@ namespace real_estate_web_application.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Resim()
         {
-            Ilan = new HashSet<Ilan>();
             Kullanicilar = new HashSet<Kullanicilar>();
         }
 
@@ -23,8 +22,9 @@ namespace real_estate_web_application.Models
 
         public bool? vitrinResim { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ilan> Ilan { get; set; }
+        public int? ilanID { get; set; }
+
+        public virtual Ilan Ilan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kullanicilar> Kullanicilar { get; set; }

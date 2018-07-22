@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "konutEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using real_estate_web_application.Models;
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <b>Konut Ekle</b>
+                <br />
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" method="post" action="konutEkle">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Başlık</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="baslik">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Fiyat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="fiyat">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Tarih</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="" data-mask="99/99/9999" class="form-control" name="tarih">
+                            <span class="help-inline">gg/aa/yyyy</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Metre Kare</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="metrekare">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Açıklama</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="aciklama">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Vitrin Durumu</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="vitrin">
+                                <option value="default">Vitrin Durum Seç</option>
+                                <option value="true">Vitrinde</option>
+                                <option value="false">Vitrinde Değil</option>
+                            </select>
+                        </div>
+                    </div>                   
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Durumu</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="durum">
+                                <option value="default">Durum Seç</option>
+                                <option value="satilik">Satılık</option>
+                                <option value="kiralik">Kiralık</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <input type="hidden" value="1" name="kullaniciID" />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kategori</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="kategoriID">
+                                <option value="default">Kategori Seç</option>
+                                <option value="1">Müstakil Ev</option>
+                                <option value="2">Daire</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İl</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="IL_ID">
+                                <option value="default">İl Seç</option>
+                                @foreach (il item in ViewBag.iller)
+                                {
+                                    <option value="@item.IL_ID">@item.IL_ADI</option>
+                                }
+                               
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İlce</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="ILCE_ID">
+                                <option value="default">İlçe Seç</option>
+                                @foreach (ilce item in ViewBag.ilceler)
+                                {
+                                    <option value="@item.ILCE_ID">@item.ILCE_ADI</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Semt</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="SEMT_ID">
+                                <option value="default">Semt Seç</option>
+                                @foreach (semt item in ViewBag.semtler)
+                                {
+                                    <option value="@item.SEMT_ID">@item.SEMT_ADI</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Mahalle / Köy</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="MAH_ID">
+                                <option value="default">Mahalle / Köy Seç</option>
+                                @foreach (mahalle_koy item in ViewBag.mahalleKoyler)
+                                {
+                                    <option value="@item.MAH_ID">@item.MAHALLE_ADI</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+                   <!--<div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Oda Sayısı</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="odaSayisi">
+                                <option value="1+1">1+1</option>
+                                <option value="2+1">2+1</option>
+                                <option value="3+1">3+1</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Bina Yaşı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="binaYasi">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Bulunduğu Kat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="bulunduguKat">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kat Sayısı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="katSayisi">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Isıtma</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="isitma">
+                                <option value="dogalgaz">Doğalgaz</option>
+                                <option value="sobali">Sobalı</option>
+                                <option value="merkeziIsitma">Merkezi Isıtma</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Banyo Sayısı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="banyoSayisi">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Aidat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="aidat">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Resim Seç</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true">
+                                <option value="default">Durum Seç</option>
+                                <option value="satilik">Satılık</option>
+                                <option value="kiralik">Kiralık</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkboxes">
+                        <label class="label_check" for="checkbox-01">
+                            <input name="balkon" id="checkbox-01" value="true" type="checkbox" /> Balkon
+                        </label>
+                        <label class="label_check" for="checkbox-02">
+                            <input name="esyali" id="checkbox-02" value="true" type="checkbox" /> Eşyalı
+                        </label>
+                        <label class="label_check" for="checkbox-03">
+                            <input name="siteIcerisinde" id="checkbox-03" value="true" type="checkbox" /> Site İçerisinde
+                        </label>
+                        <label class="label_check" for="checkbox-03">
+                            <input name="krediyeUygun" id="checkbox-03" value="true" type="checkbox" /> Krediye Uygun
+                        </label>
+                    </div>-->
+                    <button type="submit" class="btn btn-primary">Konut Ekle</button>
+                    </form>
+                </div>
+        </section>
+    </div>
+</div>
+
+@section script{
+<!--custom checkbox & radio-->
+<script type="text/javascript" src="/Content/Admin/js/ga.js"></script>
+
+<!--common script for all pages-->
+<script src="/Content/Admin/js/common-scripts.js"></script>
+
+<!--script for this page-->
+<script src="/Content/Admin/js/form-component.js"></script>
+    }
+
+
+
+
+

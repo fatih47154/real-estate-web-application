@@ -46,5 +46,37 @@ namespace real_estate_web_application.Controllers
             db.Kullanicilar.Remove(k);
             db.SaveChanges();
         }
+
+        public ActionResult ilanListele()
+        {
+            ViewBag.ilanlar = db.Ilan.ToList();
+            return View();
+        }
+
+        //Bitmedi
+        public ActionResult ilanSil(int ilanID)
+        {
+            Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
+            
+            db.Ilan.Remove(ilan);
+            db.SaveChanges();
+            return RedirectToAction("ilanListele");
+        }
+
+        public ActionResult konutEkle()
+        {
+            ViewBag.iller = db.il.OrderBy(x => x.IL_ADI).ToList();
+            ViewBag.ilceler = db.ilce.ToList();
+            ViewBag.semtler = db.semt.ToList();
+            ViewBag.mahalleKoyler = db.mahalle_koy.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult konutEkle(Ilan ilanVeri,konutDetay detayVeri)
+        {
+            db.Ilan.Add(ilanVeri);
+            return RedirectToAction("ilanListele");
+        }
     }
 }

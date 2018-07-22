@@ -9,12 +9,6 @@ namespace real_estate_web_application.Models
     [Table("arsaDetay")]
     public partial class arsaDetay
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public arsaDetay()
-        {
-            Kategori = new HashSet<Kategori>();
-        }
-
         [Key]
         public int detayID { get; set; }
 
@@ -63,8 +57,5 @@ namespace real_estate_web_application.Models
         public bool? projeli { get; set; }
 
         public bool? koseParsel { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kategori> Kategori { get; set; }
     }
 }

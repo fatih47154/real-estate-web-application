@@ -20,15 +20,7 @@ namespace real_estate_web_application.Models
         [StringLength(50)]
         public string kategoriAdi { get; set; }
 
-        public int? detayID { get; set; }
-
-        public virtual arsaDetay arsaDetay { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ilan> Ilan { get; set; }
-
-        public virtual isyeriDetay isyeriDetay { get; set; }
-
-        public virtual konutDetay konutDetay { get; set; }
     }
 }

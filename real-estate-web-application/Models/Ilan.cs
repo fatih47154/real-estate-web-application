@@ -9,6 +9,13 @@ namespace real_estate_web_application.Models
     [Table("Ilan")]
     public partial class Ilan
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ilan()
+        {
+            Resim = new HashSet<Resim>();
+            yorum = new HashSet<yorum>();
+        }
+
         public int ilanID { get; set; }
 
         [StringLength(100)]
@@ -21,9 +28,6 @@ namespace real_estate_web_application.Models
 
         public int? metrekare { get; set; }
 
-        [StringLength(300)]
-        public string adres { get; set; }
-
         [StringLength(500)]
         public string aciklama { get; set; }
 
@@ -34,9 +38,9 @@ namespace real_estate_web_application.Models
 
         public int? kullaniciID { get; set; }
 
-        public int? kategoriID { get; set; }
+        public int? detayID { get; set; }
 
-        public int? resimID { get; set; }
+        public int? kategoriID { get; set; }
 
         public long? IL_ID { get; set; }
 
@@ -52,12 +56,18 @@ namespace real_estate_web_application.Models
 
         public virtual Kategori Kategori { get; set; }
 
+        public virtual konutDetay konutDetay { get; set; }
+
         public virtual Kullanicilar Kullanicilar { get; set; }
 
         public virtual mahalle_koy mahalle_koy { get; set; }
 
-        public virtual Resim Resim { get; set; }
-
         public virtual semt semt { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Resim> Resim { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<yorum> yorum { get; set; }
     }
 }
