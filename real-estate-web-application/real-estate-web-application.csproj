@@ -1910,12 +1910,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Content\Admin\assets\advanced-datatable\component.json" />
     <Content Include="Content\Admin\assets\advanced-datatable\docs\media\license\Syntax Highlighter" />
     <Content Include="Content\Admin\assets\advanced-datatable\examples\examples_support\editable_ajax.php" />
@@ -2106,9 +2104,16 @@
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\Admin\ilanListele.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\siteOzellikleri.cshtml" />
+    <Content Include="Views\Admin\konutEkle.cshtml" />
     <Content Include="Views\Admin\kullaniciListele.cshtml" />
+    <Content Include="Views\Admin\siteOzellikleri.cshtml" />
+    <Content Include="Views\Home\Hakkimizda.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
