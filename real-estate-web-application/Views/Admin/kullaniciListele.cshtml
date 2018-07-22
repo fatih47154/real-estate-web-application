@@ -16,11 +16,10 @@
                 <thead>
                     <tr>
                         <th><i class="icon-bullhorn"></i>Adı</th>
-                        <th class="hidden-phone"><i class="icon-question-sign"></i>Soyadı</th>
+                        <th><i class="icon-question-sign"></i>Soyadı</th>
                         <th><i class="icon-bookmark"></i>Kullanıcı Adı</th>
                         <th><i class="icon-edit"></i>Telefon</th>
-                        <th><i class="icon-edit"></i>Sil</th>
-                        <th></th>
+                        <th><i class="icon-edit"></i>İşlemler</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,12 +62,9 @@
                         <th><i class="icon-bookmark"></i>Kullanıcı Adı</th>
                         <th><i class="icon-edit"></i>Telefon</th>
                         <th><i class="icon-edit"></i>İşlemler</th>
-                        
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                   
                         @foreach (Kullanicilar a in ViewBag.Kullanicilar)
                         {
                             if (a.admin==false)

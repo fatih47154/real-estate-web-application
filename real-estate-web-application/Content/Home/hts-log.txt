@@ -1,0 +1,28 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 29 Jun 2018 09:43:31 at http://emlakciplatinum.platinum.webdeneme.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "tr, en, *" http://emlakciplatinum.platinum.webdeneme.com/ -O1 "C:\Benim Web Sitem\emlak2" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+09:44:40	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/site_document/icon_img/favicon_b.jpg (from emlakciplatinum.platinum.webdeneme.com/)
+09:47:01	Error: 	"Not Found" (404) at link https://hemencdn.com/interface/platinum/css/owl.video.play.png (from https://hemencdn.com/interface/platinum/css/main.css)
+09:47:04	Error: 	"Not Found" (404) at link https://hemencdn.com/interface/platinum/css/openhand.cur (from https://hemencdn.com/interface/platinum/css/main.css)
+09:47:04	Error: 	"Not Found" (404) at link https://hemencdn.com/interface/platinum/css/closedhand.cur (from https://hemencdn.com/interface/platinum/css/main.css)
+09:47:04	Error: 	"Not Found" (404) at link https://hemencdn.com/interface/platinum/assets/loader.gif (from https://hemencdn.com/interface/platinum/css/main.css)
+09:47:04	Error: 	"Not Found" (404) at link https://hemencdn.com/interface/platinum/img/fancybox_buttons.png (from https://hemencdn.com/interface/platinum/css/main.css)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/POST (from emlakciplatinum.platinum.webdeneme.com/WebResource.axd?d=yg7t6yzv6aA6hOi79iZOtIYXmYIuoIjquywC0cVN8FK6erlmI5R1w4X41MAVdDpjs09fejXbn7JJ7knR8U50VN9En7j3Uju6TEfRZyHvTNg1&t=635117037316159565)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/Firefox/ (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=HZFcykFttIQ2ikE_hVPxiQxybw_O_jf80B0v4LVnfimC3FYQDOZU0psHlx3gtYTprtScajPmSSsM6_IxL8tae5YP6JlHYiqWC_Rw5XoaoGd9Tk2EphXlOraPYUzVTJIzRXH2Eg4qEN40AOC45gPGPX7HHARP8JDqq1WsywGjvn01&t=26dfbc01)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/AppleWebKit/ (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=HZFcykFttIQ2ikE_hVPxiQxybw_O_jf80B0v4LVnfimC3FYQDOZU0psHlx3gtYTprtScajPmSSsM6_IxL8tae5YP6JlHYiqWC_Rw5XoaoGd9Tk2EphXlOraPYUzVTJIzRXH2Eg4qEN40AOC45gPGPX7HHARP8JDqq1WsywGjvn01&t=26dfbc01)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/Opera/ (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=HZFcykFttIQ2ikE_hVPxiQxybw_O_jf80B0v4LVnfimC3FYQDOZU0psHlx3gtYTprtScajPmSSsM6_IxL8tae5YP6JlHYiqWC_Rw5XoaoGd9Tk2EphXlOraPYUzVTJIzRXH2Eg4qEN40AOC45gPGPX7HHARP8JDqq1WsywGjvn01&t=26dfbc01)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/MicrosoftAjaxWebForms.js (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=3najDHAvL9ngCqFVIi0PreorGYKHRrl4KHGlWFxu59pUzaWXAyNbvYYDRijjA-CrF-a6nbr74LOUI-tbmyKfRK8JRe68VMV6ld3u3hgJt3V7jtCnXkvamfMSuB_5bYwKXQbWwu6xzy4PJcK5qCKm2Vp4CZ5sVNI8XZ6WWpaN49i8M88WIvkp6-XP6UhjkiWR0&t=26dfbc01)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/MicrosoftAjaxSerialization.js (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=3najDHAvL9ngCqFVIi0PreorGYKHRrl4KHGlWFxu59pUzaWXAyNbvYYDRijjA-CrF-a6nbr74LOUI-tbmyKfRK8JRe68VMV6ld3u3hgJt3V7jtCnXkvamfMSuB_5bYwKXQbWwu6xzy4PJcK5qCKm2Vp4CZ5sVNI8XZ6WWpaN49i8M88WIvkp6-XP6UhjkiWR0&t=26dfbc01)
+09:47:04	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/MicrosoftAjaxNetwork.js (from emlakciplatinum.platinum.webdeneme.com/ScriptResource.axd?d=3najDHAvL9ngCqFVIi0PreorGYKHRrl4KHGlWFxu59pUzaWXAyNbvYYDRijjA-CrF-a6nbr74LOUI-tbmyKfRK8JRe68VMV6ld3u3hgJt3V7jtCnXkvamfMSuB_5bYwKXQbWwu6xzy4PJcK5qCKm2Vp4CZ5sVNI8XZ6WWpaN49i8M88WIvkp6-XP6UhjkiWR0&t=26dfbc01)
+09:47:28	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/ (from connect.facebook.net/tr_TR/sdk.js)
+09:47:28	Warning: 	Found for emlakciplatinum.platinum.webdeneme.com/^([^:/?
+09:47:28	Warning: 	File has moved from emlakciplatinum.platinum.webdeneme.com/^([^:/? to /ErrorPage/index.html?aspxerrorpath=/^([^:/
+09:47:29	Error: 	"Not Found" (404) at link emlakciplatinum.platinum.webdeneme.com/restserver.php (from connect.facebook.net/tr_TR/sdk.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 4 minutes 11 seconds : 95 links scanned, 77 files written (7890193 bytes overall) [6838449 bytes received at 27244 bytes/sec], 1449541 bytes transferred using HTTP compression in 9 files, ratio 24%, 1.1 requests per connection
+(15 errors, 2 warnings, 0 messages)
