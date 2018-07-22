@@ -1,0 +1,832 @@
+﻿
+@{
+    ViewBag.Title = "konutDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using real_estate_web_application.Models;
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <b>Konut Ekle</b>
+                <br />
+            </header>
+            <div class="panel-body">
+                <form class="form-horizontal tasi-form" method="post" action="konutDuzenle">
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Başlık</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="baslik" value="@ViewBag.ilan.baslik">
+                        </div>
+                    </div>
+                    <input type="hidden" value="tarih" />
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Fiyat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="fiyat" value="@ViewBag.ilan.fiyat">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Metre Kare</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="metrekare" value="@ViewBag.ilan.metrekare">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Açıklama</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="aciklama" value="@ViewBag.ilan.aciklama">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Vitrin Durumu</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="vitrin">
+                                @if (ViewBag.ilan.vitrin == true)
+                                {
+                                    <option value="true" selected>Vitrinde</option>
+                                    <option value="false">Vitrinde Değil</option>
+                                }
+                                else
+                                {
+                                    <option value="true">Vitrinde</option>
+                                    <option value="false" selected>Vitrinde Değil</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Durumu</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="durum">
+                            @if (ViewBag.ilan.durum == "satilik")
+                            {
+                                <option value="satilik" selected>Satılık</option>
+                                <option value="kiralik">Kiralık</option>
+                            }
+                            else
+                            {
+                                <option value="satilik">Satılık</option>
+                                <option value="kiralik" selected>Kiralık</option>
+                            }
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" value="1" name="kullaniciID" />
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kategori</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="kategoriID">
+                                @if (ViewBag.ilan.kategoriID == 1)
+                                {
+                                    <option value="1" selected>Müstakil Ev</option>
+                                    <option value="2">Daire</option>
+                                }
+                                else
+                                {
+                                    <option value="1">Müstakil Ev</option>
+                                    <option value="2" selected>Daire</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İl</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="IL_ID">
+                                <option value="default">İl Seç</option>
+                                @foreach (il item in ViewBag.iller)
+                                {
+                                    <option value="@item.IL_ID">@item.IL_ADI</option>
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">İlce</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="ILCE_ID">
+                                <option value="default">İlçe Seç</option>
+                                @foreach (ilce item in ViewBag.ilceler)
+                                {
+                                    <option value="@item.ILCE_ID">@item.ILCE_ADI</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Semt</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="SEMT_ID">
+                                <option value="default">Semt Seç</option>
+                                @foreach (semt item in ViewBag.semtler)
+                                {
+                                    <option value="@item.SEMT_ID">@item.SEMT_ADI</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                   <!-- <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Mahalle / Köy</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="MAH_ID">
+                                <option value="default">Mahalle / Köy Seç</option>
+                                @foreach (mahalle_koy item in ViewBag.mahalleKoyler)
+                                {
+                                    <option value="@item.MAH_ID">@item.MAHALLE_ADI</option>
+                                }
+                            </select>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Oda Sayısı</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="odaSayisi">
+                                <option value="default">Oda Sayısı Seçiniz</option>
+                                <option value="1+1">1+1</option>
+                                <option value="2+1">2+1</option>
+                                <option value="3+1">3+1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Bina Yaşı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="binaYasi" value="@ViewBag.detay.binaYasi">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Bulunduğu Kat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="bulunduguKat" value="@ViewBag.detay.bulunduguKat">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Kat Sayısı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="katSayisi" value="@ViewBag.detay.katSayisi">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Isıtma</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="isitma">
+                                @if(ViewBag.detay.isitma == "dogalgaz")
+                                {
+                                    <option value="dogalgaz" selected>Doğalgaz</option>
+                                    <option value="sobali">Sobalı</option>
+                                    <option value="merkeziIsitma">Merkezi Isıtma</option>
+                                }
+                                else if (ViewBag.detay.isitma == "sobali")
+                                {
+                                    <option value="dogalgaz">Doğalgaz</option>
+                                    <option value="sobali" selected>Sobalı</option>
+                                    <option value="merkeziIsitma">Merkezi Isıtma</option>
+                                }
+                                else
+                                {
+                                    <option value="dogalgaz">Doğalgaz</option>
+                                    <option value="sobali">Sobalı</option>
+                                    <option value="merkeziIsitma" selected>Merkezi Isıtma</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Banyo Sayısı</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="banyoSayisi" value="@ViewBag.detay.banyoSayisi">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Aidat</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="aidat"  value="@ViewBag.detay.aidat">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Resim Seç</label>
+                        <div class="col-md-10">
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true">
+                                <option value="default">Durum Seç</option>
+                                <option value="satilik">Satılık</option>
+                                <option value="kiralik">Kiralık</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">İç Özellikler</label>
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-01">
+                                    @if (ViewBag.detay.esyali == true)
+                                    {
+                                        <input name="esyali" id="checkbox-01" value="true" type="checkbox" checked>
+                                    }
+                                    else
+                                    {
+                                        <input name="esyali" id="checkbox-01" value="true" type="checkbox">
+                                    }
+                                    Eşyalı
+                                    <input type="hidden" value="false" name="esyali" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-02">
+                                @if (ViewBag.detay.krediyeUygun == true)
+                                {
+                                    <input name="krediyeUygun" id="checkbox-02" value="true" type="checkbox" checked/>}
+                                else
+                                {
+                                    <input name="krediyeUygun" id="checkbox-02" value="true" type="checkbox" />
+                                }
+                                Krediye Uygun
+                                <input type="hidden" value="false" name="krediyeUygun" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-03">
+                                    @if (ViewBag.detay.takas == true)
+                                    {
+                                        <input name="takas" id="checkbox-03" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="takas" id="checkbox-03" type="checkbox" />
+                                    }
+                                    Takas
+                                    <input type="hidden" value="false" name="takas" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-04">
+                                    @if (ViewBag.detay.yanginAlarm == true)
+                                    {
+                                        <input name="yanginAlarm" id="checkbox-04" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="yanginAlarm" id="checkbox-04" value="true" type="checkbox" />
+                                    }
+                                    Yangın Alarm
+                                    <input type="hidden" value="false" name="yanginAlarm" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-05">
+                                    @if (ViewBag.detay.hirsizAlarm == true)
+                                    {
+                                        <input name="hirsizAlarm" id="checkbox-05" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="hirsizAlarm" id="checkbox-05" value="true" type="checkbox" />
+                                    }
+                                    Hırsız Alarm
+                                    <input type="hidden" value="false" name="hirsizAlarm" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-06">
+                                    @if (ViewBag.detay.amerikanMutfak == true)
+                                    {
+                                        <input name="amerikanMutfak" id="checkbox-06" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="amerikanMutfak" id="checkbox-06" value="true" type="checkbox" />
+                                    }
+                                    Amerikan Mutfak
+                                    <input type="hidden" value="false" name="amerikanMutfak" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-07">
+                                    @if (ViewBag.detay.alaturkaTuvalet == true)
+                                    {
+                                        <input name="alaturkaTuvalet" id="checkbox-07" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="alaturkaTuvalet" id="checkbox-07" value="true" type="checkbox" />
+                                    }
+                                    Alaturka Tuvalet
+                                    <input type="hidden" value="false" name="alaturkaTuvalet" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-08">
+                                    @if (ViewBag.detay.dusakabin == true)
+                                    {
+                                        <input name="dusakabin" id="checkbox-08" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="dusakabin" id="checkbox-08" value="true" type="checkbox" />
+                                    }
+                                   Duşakabin
+                                    <input type="hidden" value="false" name="dusakabin" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-09">
+                                    @if (ViewBag.detay.fiberInternet == true)
+                                    {
+                                        <input name="fiberInternet" id="checkbox-09" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="fiberInternet" id="checkbox-09" value="true" type="checkbox" />
+                                    }
+                                    Fiber İnternet
+                                    <input type="hidden" value="false" name="fiberInternet" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-10">
+                                    @if (ViewBag.detay.ankastreMutfak == true)
+                                    {
+                                        <input name="ankastreMutfak" id="checkbox-10" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="ankastreMutfak" id="checkbox-10" value="true" type="checkbox" />
+                                    }
+                                    Ankastre Mutfak
+                                    <input type="hidden" value="false" name="ankastreMutfak" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-11">
+                                    @if (ViewBag.detay.laminat == true)
+                                    {
+                                        <input name="laminat" id="checkbox-11" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="laminat" id="checkbox-11" value="true" type="checkbox" />
+                                    }
+                                    Laminat
+                                    <input type="hidden" value="false" name="laminat" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-12">
+                                    @if (ViewBag.detay.somine == true)
+                                    {
+                                        <input name="somine" id="checkbox-12" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="somine" id="checkbox-12" value="true" type="checkbox" />
+                                    }
+                                    Şömine
+                                    <input type="hidden" value="false" name="somine" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Dış Özellikler</label>
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-13">
+                                    @if (ViewBag.detay.balkon == true)
+                                    {
+                                        <input name="balkon" id="checkbox-13" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="balkon" id="checkbox-13" value="true" type="checkbox" />
+                                    }
+                                    Balkon
+                                    <input type="hidden" value="false" name="balkon" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-14">
+                                    @if (ViewBag.detay.siteIcerisinde == true)
+                                    {
+                                        <input name="siteIcerisinde" id="checkbox-14" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="siteIcerisinde" id="checkbox-14" value="true" type="checkbox" />
+                                    }
+                                    Site İçerisinde
+                                    <input type="hidden" value="false" name="siteIcerisinde" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-15">
+                                    @if (ViewBag.detay.asansor == true)
+                                    {
+                                        <input name="asansor" id="checkbox-15" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="asansor" id="checkbox-15" value="true" type="checkbox" />
+                                    }
+                                    Asansör
+                                    <input type="hidden" value="false" name="asansor" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-16">
+                                    @if (ViewBag.detay.goruntuluDiafon == true)
+                                    {
+                                        <input name="goruntuluDiafon" id="checkbox-16" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="goruntuluDiafon" id="checkbox-16" value="true" type="checkbox" />
+                                    }
+                                    Görüntülü Diafon
+                                    <input type="hidden" value="false" name="goruntuluDiafon" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-17">
+                                    @if (ViewBag.detay.isicam == true)
+                                    {
+                                        <input name="isicam" id="checkbox-17" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="isicam" id="checkbox-17" value="true" type="checkbox" />
+                                    }
+                                    Isıcam
+                                    <input type="hidden" value="false" name="isicam" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-18">
+                                    @if (ViewBag.detay.guvenlik == true)
+                                    {
+                                        <input name="guvenlik" id="checkbox-18" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="guvenlik" id="checkbox-18" value="true" type="checkbox" />
+                                    }
+                                    Güvenlik
+                                    <input type="hidden" value="false" name="guvenlik" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-19">
+                                    @if (ViewBag.detay.isiYalitim == true)
+                                    {
+                                        <input name="isiYalitim" id="checkbox-19" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="isiYalitim" id="checkbox-19" value="true" type="checkbox" />
+                                    }
+                                    Isı Yalıtım
+                                    <input type="hidden" value="false" name="isiYalitim" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-20">
+                                    @if (ViewBag.detay.uydu == true)
+                                    {
+                                        <input name="uydu" id="checkbox-20" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="uydu" id="checkbox-20" value="true" type="checkbox" />
+                                    }
+                                    Uydu
+                                    <input type="hidden" value="false" name="uydu" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-21">
+                                    @if (ViewBag.detay.kapaliGaraj == true)
+                                    {
+                                        <input name="kapaliGaraj" id="checkbox-21" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="kapaliGaraj" id="checkbox-21" value="true" type="checkbox" />
+                                    }
+                                    Kapalı Garaj
+                                    <input type="hidden" value="false" name="kapaliGaraj" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-22">
+                                    @if (ViewBag.detay.kapici == true)
+                                    {
+                                        <input name="kapici" id="checkbox-22" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="kapici" id="checkbox-22" value="true" type="checkbox" />
+                                    }
+                                    Kapıcı
+                                    <input type="hidden" value="false" name="kapici" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-23">
+                                    @if (ViewBag.detay.otopark == true)
+                                    {
+                                        <input name="otopark" id="checkbox-23" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="otopark" id="checkbox-23" value="true" type="checkbox" />
+                                    }
+                                    Otopark
+                                    <input type="hidden" value="false" name="otopark" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-24">
+                                    @if (ViewBag.detay.sesYalitim == true)
+                                    {
+                                        <input name="sesYalitim" id="checkbox-24" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="sesYalitim" id="checkbox-24" value="true" type="checkbox" />
+                                    }
+                                    Ses Yalıtım
+                                    <input type="hidden" value="false" name="sesYalitim" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Muhit</label>
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-25">
+                                    @if (ViewBag.detay.sporAlani == true)
+                                    {
+                                        <input name="sporAlani" id="checkbox-25" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="sporAlani" id="checkbox-25" value="true" type="checkbox" />
+                                    }
+                                    Spor Alanı
+                                    <input type="hidden" value="false" name="sporAlani" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-26">
+                                    @if (ViewBag.detay.havuz == true)
+                                    {
+                                        <input name="havuz" id="checkbox-26" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="havuz" id="checkbox-26" value="true" type="checkbox" />
+                                    }
+                                    Havuz
+                                    <input type="hidden" value="false" name="havuz" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-27">
+                                    @if (ViewBag.detay.oyunParki == true)
+                                    {
+                                        <input name="oyunParki" id="checkbox-27" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="oyunParki" id="checkbox-27" value="true" type="checkbox" />
+                                    }
+                                    Oyun Parkı
+                                    <input type="hidden" value="false" name="oyunParki" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-28">
+                                    @if (ViewBag.detay.belediye == true)
+                                    {
+                                        <input name="belediye" id="checkbox-28" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="belediye" id="checkbox-28" value="true" type="checkbox" />
+                                    }
+                                    Belediye
+                                    <input type="hidden" value="false" name="belediye" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-29">
+                                    @if (ViewBag.detay.cami == true)
+                                    {
+                                        <input name="cami" id="checkbox-29" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="cami" id="checkbox-29" value="true" type="checkbox" />
+                                    }
+                                    Cami
+                                    <input type="hidden" value="false" name="cami" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-30">
+                                    @if (ViewBag.detay.sehirMerkezi == true)
+                                    {
+                                        <input name="sehirMerkezi" id="checkbox-30" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="sehirMerkezi" id="checkbox-30" value="true" type="checkbox" />
+                                    }
+                                    Sehir Merkezi
+                                    <input type="hidden" value="false" name="sehirMerkezi" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-31">
+                                    @if (ViewBag.detay.hastane == true)
+                                    {
+                                        <input name="hastane" id="checkbox-31" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="hastane" id="checkbox-31" value="true" type="checkbox" />
+                                    }
+                                    Hastane
+                                    <input type="hidden" value="false" name="hastane" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-32">
+                                    @if (ViewBag.detay.market == true)
+                                    {
+                                        <input name="market" id="checkbox-32" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="market" id="checkbox-32" value="true" type="checkbox" />
+                                    }
+                                    Market
+                                    <input type="hidden" value="false" name="market" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-33">
+                                    @if (ViewBag.detay.park == true)
+                                    {
+                                        <input name="park" id="checkbox-33" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="park" id="checkbox-33" value="true" type="checkbox" />
+                                    }
+                                    Park
+                                    <input type="hidden" value="false" name="park" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-34">
+                                    @if (ViewBag.detay.okul == true)
+                                    {
+                                        <input name="okul" id="checkbox-34" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="okul" id="checkbox-34" value="true" type="checkbox" />
+                                    }
+                                    Okul
+                                    <input type="hidden" value="false" name="okul" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Ulaşım</label>
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-35">
+                                    @if (ViewBag.detay.anayol == true)
+                                    {
+                                        <input name="anayol" id="checkbox-35" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="anayol" id="checkbox-35" value="true" type="checkbox" />
+                                    }
+                                    Anayol
+                                    <input type="hidden" value="false" name="anayol" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-36">
+                                    @if (ViewBag.detay.otobusDuragi == true)
+                                    {
+                                        <input name="otobusDuragi" id="checkbox-36" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="otobusDuragi" id="checkbox-36" value="true" type="checkbox" />
+                                    }
+                                    Otobüs Durağı
+                                    <input type="hidden" value="false" name="otobusDuragi" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-37">
+                                    @if (ViewBag.detay.cadde == true)
+                                    {
+                                        <input name="cadde" id="checkbox-37" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="cadde" id="checkbox-37" value="true" type="checkbox" />
+                                    }
+                                    Cadde
+                                    <input type="hidden" value="false" name="cadde" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-38">
+                                    @if (ViewBag.detay.minibus == true)
+                                    {
+                                        <input name="minibus" id="checkbox-38" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="minibus" id="checkbox-38" value="true" type="checkbox" />
+                                    }
+                                    Minibüs
+                                    <input type="hidden" value="false" name="minibus" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label col-lg-2" for="inputSuccess">Konut Tipi</label>
+                        <div class="col-lg-9">
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-39">
+                                    @if (ViewBag.detay.araKat == true)
+                                    {
+                                        <input name="araKat" id="checkbox-39" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="araKat" id="checkbox-39" value="true" type="checkbox" />
+                                    }
+                                    Ara Kat
+                                    <input type="hidden" value="false" name="araKat" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-40">
+                                    @if (ViewBag.detay.bahceKati == true)
+                                    {
+                                        <input name="bahceKati" id="checkbox-40" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="bahceKati" id="checkbox-40" value="true" type="checkbox" />
+                                    }
+                                    Bahçe Katı
+                                    <input type="hidden" value="false" name="bahceKati" />
+                                </label>
+                            </div>
+                            <div class="col-lg-3">
+                                <label class="label_check" for="checkbox-41">
+                                    @if (ViewBag.detay.dubleks == true)
+                                    {
+                                        <input name="dubleks" id="checkbox-41" value="true" type="checkbox" checked/>
+                                    }
+                                    else
+                                    {
+                                        <input name="dubleks" id="checkbox-41" value="true" type="checkbox" />
+                                    }
+                                    Dubleks
+                                    <input type="hidden" value="false" name="dubleks" />
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
+                    <button type="submit" class="btn btn-primary">İlanı Güncelle</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+@section script{
+    <!--custom checkbox & radio-->
+    <script type="text/javascript" src="/Content/Admin/js/ga.js"></script>
+    <!--common script for all pages-->
+    <script src="/Content/Admin/js/common-scripts.js"></script>
+    <!--script for this page-->
+    <script src="/Content/Admin/js/form-component.js"></script>
+}
+

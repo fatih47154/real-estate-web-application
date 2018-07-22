@@ -110,5 +110,38 @@ namespace real_estate_web_application.Controllers
 
             return RedirectToAction("ilanListele");
         }
+
+        public ActionResult konutDuzenle(int ilanID)
+        {
+            Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
+            konutDetay detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
+
+            ViewBag.iller = db.il.OrderBy(x => x.IL_ADI).ToList();
+            ViewBag.ilceler = db.ilce.ToList();
+            ViewBag.semtler = db.semt.ToList();
+            ViewBag.mahalleKoyler = db.mahalle_koy.ToList();
+
+            ViewBag.ilan = ilan;
+            ViewBag.detay = detay;
+            return View();
+        }
+
+        // Daha Bitmedi Ellemeyin
+        [HttpPost]
+        public ActionResult konutDuzenle(int ilanID,Ilan ilanVeri, konutDetay detayVeri)
+        {
+            var ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
+            var detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
+            
+            ilan = ilanVeri;
+            ilan.baslik = ilanVeri.baslik;
+            string date = DateTime.Now.ToShortDateString();
+            ilan.tarih = Convert.ToDateTime(date);
+            detay = detayVeri;
+            db.SaveChanges();
+
+
+            return RedirectToAction("ilanListele");
+        }
     }
 }
