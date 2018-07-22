@@ -9,14 +9,10 @@ namespace real_estate_web_application.Models
     [Table("konutDetay")]
     public partial class konutDetay
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public konutDetay()
-        {
-            Ilan = new HashSet<Ilan>();
-        }
-
         [Key]
         public int detayID { get; set; }
+
+        public int? ilanID { get; set; }
 
         [StringLength(50)]
         public string odaSayisi { get; set; }
@@ -117,7 +113,6 @@ namespace real_estate_web_application.Models
 
         public bool? dubleks { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ilan> Ilan { get; set; }
+        public virtual Ilan Ilan { get; set; }
     }
 }

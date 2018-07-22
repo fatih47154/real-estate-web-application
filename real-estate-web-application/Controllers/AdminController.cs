@@ -53,16 +53,6 @@ namespace real_estate_web_application.Controllers
             return View();
         }
 
-        //Bitmedi
-        public ActionResult ilanSil(int ilanID)
-        {
-            Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
-            
-            db.Ilan.Remove(ilan);
-            db.SaveChanges();
-            return RedirectToAction("ilanListele");
-        }
-
         public ActionResult konutEkle()
         {
             ViewBag.iller = db.il.OrderBy(x => x.IL_ADI).ToList();
@@ -76,9 +66,48 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public ActionResult konutEkle(Ilan ilanVeri,konutDetay detayVeri)
         {
-            db.konutDetay.Add(detayVeri);
-            db.Ilan.Add(ilanVeri);
-            db.SaveChanges();
+            try
+            {
+                string date = DateTime.Now.ToShortDateString();
+                konutDetay yeniKonutDetay = new konutDetay();
+                yeniKonutDetay = detayVeri;
+                yeniKonutDetay.ilanID = ilanVeri.ilanID;
+                db.konutDetay.Add(yeniKonutDetay);
+
+                Ilan yeniIlan = new Ilan();
+                yeniIlan = ilanVeri;
+                yeniIlan.tarih = Convert.ToDateTime(date);
+
+                db.Ilan.Add(yeniIlan);
+                db.SaveChanges();
+
+                TempData["a"] = ilanVeri.baslik+" Başlıklı İlan Eklendi.";
+            }
+            catch (Exception)
+            {
+                TempData["a"] = "İlan Silinirken Bir Hata Ortaya Çıktı";
+            }
+
+            return RedirectToAction("ilanListele");
+        }
+
+        public ActionResult konutSil(int ilanID)
+        {
+            Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
+            konutDetay detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
+
+            try
+            {
+                db.Ilan.Remove(ilan);
+                db.konutDetay.Remove(detay);
+                db.SaveChanges();
+                TempData["a"] = ilan.baslik + " Başlıklı İlan Silindi";
+            }
+            catch (Exception)
+            {
+                TempData["a"] = "İlan Silinirken Bir Hata Ortaya Çıktı";
+            }
+
             return RedirectToAction("ilanListele");
         }
     }
