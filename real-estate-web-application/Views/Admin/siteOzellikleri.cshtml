@@ -11,59 +11,58 @@
                 <h1><b>Site Özellikleri</b></h1>
             </header>
             <div class="panel-body">
-                <form class="form-horizontal tasi-form" method="get">
+                <form class="form-horizontal tasi-form" method="post" action="siteOzellikleri" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Site Adı</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.ad" type="text">
+                            <input class="form-control" id="focusedInput" name="ad" value="@ViewBag.siteOzellikleri.ad" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">E mail</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.email" type="text">
+                            <input class="form-control" id="focusedInput" name="email" value="@ViewBag.siteOzellikleri.email" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Telefon</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.telefon" type="text">
+                            <input class="form-control" id="focusedInput" name="telefon" value="@ViewBag.siteOzellikleri.telefon" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Cep Tel</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.cepTel" type="text">
+                            <input class="form-control" id="focusedInput" name="cepTel" value="@ViewBag.siteOzellikleri.cepTel" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Adres</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.adres" type="text">
+                            <input class="form-control" id="focusedInput" name="adres" value="@ViewBag.siteOzellikleri.adres" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Hakkımızda</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.hakkimizda" type="text">
+                            <input class="form-control" id="focusedInput" name="hakkimizda" value="@ViewBag.siteOzellikleri.hakkimizda" type="text">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2">Misyon</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="focusedInput" value="@ViewBag.siteOzellikleri.misyon" type="text">
+                            <input class="form-control" id="focusedInput" name="misyon" value="@ViewBag.siteOzellikleri.misyon" type="text">
                         </div>
                     </div>
 
+                    <input type="hidden" value="@ViewBag.siteOzellikleri.resimID" name="resimID"/>
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2">Logo</label>
-                        <div class="col-sm-10">
-                            <input type="file" id="exampleInputFile">
-                        </div>
-
+                        <label for="exampleInputFile">Resim Seçiniz</label>
+                        <input type="file" id="validationDefault01" name="resim" required>
                     </div>
+
                     <br />
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" class="btn btn-info">Kaydet</button>
 
                 </form>
             </div>
