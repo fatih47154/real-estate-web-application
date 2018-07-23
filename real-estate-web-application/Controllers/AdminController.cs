@@ -87,16 +87,16 @@ namespace real_estate_web_application.Controllers
             try
             {
                 
-                TempData["b"] =k.ad+" "+k.soyad+" İsimli Admin Silindi";
+                TempData["b"] =k.ad+" "+k.soyad+" İsimli Kullanıcı Silindi";
                 db.Kullanicilar.Remove(k);
                 db.SaveChanges();
             }
             catch (Exception)
             {
 
-                
+                TempData["b"] = "Kullanıcı Silinirken Bir Hata Ortaya Çıktı";
             }
-            //return RedirectToAction("kullaniciListele");
+           
 
         }
 

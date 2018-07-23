@@ -6,12 +6,12 @@
 @using real_estate_web_application.Models;
 
 
-<!--ADMİN LİSTESİ-->
+
 <div class="row">
     <div class="col-lg-12">
         <section class="panel">
-            <header class="panel-heading">
-                <B>İlan Listesi</B>
+            <header style="text-align:center" class="panel-heading">
+                <B>Admin ve Kullanıcılar Listesi</B>
             </header>
 
             @{
@@ -27,11 +27,13 @@
                 }
             }
 
+
+            <!--ADMİN LİSTESİ-->
             <div class="row">
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Admin Listesi
+                            <b>Admin Listesi</b>
                         </header>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
@@ -54,38 +56,7 @@
                                             <td>@a.soyad</td>
                                             <td><span class="label label-info label-mini">@a.kullaniciAdi</span></td>
                                             <td>@a.telefon</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
-
-                                                <a href="#" class="btn btn-danger btn-xs modalAc" data-toggle="modal" data-adminad="@a.ad" data-adminsoyad="@a.soyad" data-adminid="@a.kullaniciID" data-target="#modalConfirmDelete"><i class="icon-trash"></i></a>
-                                                <!--Modal: modalConfirmDelete-->
-                                                <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-                                                        <!--Content-->
-                                                        <div class="modal-content text-center">
-                                                            <!--Header-->
-                                                            <div class="modal-header d-flex justify-content-center">
-                                                                <p class="heading">Admin Sil</p>
-                                                            </div>
-
-                                                            <!--Body-->
-                                                            <div class="modal-body">
-
-                                                                <p></p>
-
-                                                            </div>
-
-                                                            <!--Footer-->
-                                                            <div class="modal-footer flex-center">
-                                                                <a class="btn  btn-success adminSil">Evet</a>
-                                                                <a class="btn  btn-danger waves-effect" data-dismiss="modal">İptal</a>
-                                                            </div>
-                                                        </div>
-                                                        <!--/.Content-->
-                                                    </div>
-                                                </div>
-                                                <!--Modal: modalConfirmDelete-->
-                                            </td>
+                                            <td><button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button></td>
                                         </tr>
                                     }
                                 }
@@ -96,14 +67,15 @@
                 </div>
             </div>
 
-
+           ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+            <br /><br />
 
             <!--KULLANICI LİSTESİ-->
             <div class="row">
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Kullanıcı Listesi
+                            <b>Kullanıcı Listesi </b>
                         </header>
                         <table class="table table-striped table-advance table-hover">
                             <thead>
@@ -125,7 +97,36 @@
                                             <td>@a.soyad</td>
                                             <td><span class="label label-info label-mini">@a.kullaniciAdi</span></td>
                                             <td>@a.telefon</td>
-                                            <td><a href="#" class="btn btn-danger btn-xs klnSil" data-klnid="@a.kullaniciID"><i class="icon-trash"></i></a></td>
+
+                                            <td><a href="#" class="btn btn-danger btn-xs modalAc" data-toggle="modal" data-kullaniciad="@a.ad" data-kullanicisoyad="@a.soyad" data-kullaniciid="@a.kullaniciID" data-target="#modalConfirmDelete"><i class="icon-trash"></i></a>
+                                                <!--Modal: modalConfirmDelete-->
+                                                <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                                                        <!--Content-->
+                                                        <div class="modal-content text-center">
+                                                            <!--Header-->
+                                                            <div class="modal-header d-flex justify-content-center">
+                                                                <p class="heading">Kullanıcı Sil</p>
+                                                            </div>
+
+                                                            <!--Body-->
+                                                            <div class="modal-body">
+
+                                                                <p></p>
+
+                                                            </div>
+
+                                                            <!--Footer-->
+                                                            <div class="modal-footer flex-center">
+                                                                <a class="btn  btn-success kullaniciSil">Evet</a>
+                                                                <a class="btn  btn-danger waves-effect" data-dismiss="modal">İptal</a>
+                                                            </div>
+                                                        </div>
+                                                        <!--/.Content-->
+                                                    </div>
+                                                </div>
+                                                <!--Modal: modalConfirmDelete-->                                            
+                                            </td>
                                         </tr>
                                     }
                                 }
@@ -143,33 +144,31 @@
 
                 <script>
                     $(".modalAc").click(function () {
-                        var adminAd = $(this).data("adminad");
-                        var adminSoyad = $(this).data("adminsoyad");
-                        $(".modal-body>p").html(adminAd + " " + adminSoyad + " isimli admin silinsin mi?");
-                        var adminID = $(this).data("adminid");
-                        $(".adminSil").data("adminID", adminID) //modal butonuna basıldığında id'yi çeker bu id'yide bu satırda adminSil classlı butona yolluyoruz
-                        $(".adminSil").data("adminAd", adminAd)
-                        $(".adminSil").data("adminSoyad", adminSoyad)
+                        var kullaniciAd = $(this).data("kullaniciad");
+                        var kullaniciSoyad = $(this).data("kullanicisoyad");
+                        $(".modal-body>p").html(kullaniciAd + " " + kullaniciSoyad + " isimli kullanıcı silinsin mi?");
+                        var kullaniciID = $(this).data("kullaniciid");
+                        $(".kullaniciSil").data("kullaniciID", kullaniciID) //modal butonuna basıldığında id'yi çeker bu id'yide bu satırda kullaniciSil classlı butona yolluyoruz
+                        $(".kullaniciSil").data("kullaniciAd", kullaniciAd)
+                        $(".kullaniciSil").data("kullaniciSoyad", kullaniciSoyad)
                     });
-                    $(".adminSil").click(function () {  //adminSil classlı buton çalıştığında ajax çalışacak ve silencek admini controllers'a yolllar
-                        var adminID = $(this).data("adminID");
-                        var adminAd = $(this).data("adminAd");
-                        var adminSoyad = $(this).data("adminSoyad");                        
+                    $(".kullaniciSil").click(function () {  //kullaniciSil classlı buton çalıştığında ajax çalışacak ve silencek admini controllers'a yolllar
+                        var kullaniciID = $(this).data("kullaniciID");
+                        var kullaniciAd = $(this).data("kullaniciAd");
+                        var kullaniciSoyad = $(this).data("kullaniciSoyad");                        
                        
 
                         $.ajax({
                             type: "POST",
-                            url: "/Admin/kullaniciSil/" + adminID,
+                            url: "/Admin/kullaniciSil/" + kullaniciID,
                             success: function () {
                                 window.location.replace("/Admin/kullaniciListele");
                             },
                             error: function () {
-
+                                alert("İlan Silinirken Bir Hata Ortaya Çıktı");
                             }
                         });
-
                     });
-
                 </script>
             }
 
