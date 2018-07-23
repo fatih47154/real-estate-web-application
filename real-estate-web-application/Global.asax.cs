@@ -1,4 +1,5 @@
-﻿using System;
+﻿using real_estate_web_application.Filter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,7 @@ namespace real_estate_web_application
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalFilters.Filters.Add(new _SecurityFilter());
         }
     }
 }
