@@ -81,19 +81,26 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public void kullaniciSil(int id)
         {
-            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
-            db.Kullanicilar.Remove(k);
-            db.SaveChanges();            
+            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);            
+            
+            
+            try
+            {
+                
+                TempData["b"] =k.ad+" "+k.soyad+" İsimli Admin Silindi";
+                db.Kullanicilar.Remove(k);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            //return RedirectToAction("kullaniciListele");
+
         }
 
-        [HttpPost]
-        public void adminSil(int id)
-        {
-            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
-            db.Kullanicilar.Remove(k);
-            db.SaveChanges();
-        }
-
+     
         public ActionResult ilanListele()
         {
             ViewBag.ilanlar = db.Ilan.ToList();
