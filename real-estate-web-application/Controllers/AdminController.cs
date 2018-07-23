@@ -81,9 +81,8 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public void kullaniciSil(int id)
         {
-            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);            
-            
-            
+            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);          
+               
             try
             {
                 
@@ -95,12 +94,16 @@ namespace real_estate_web_application.Controllers
             {
 
                 TempData["b"] = "Kullanıcı Silinirken Bir Hata Ortaya Çıktı";
-            }
-           
-
+            }          
         }
 
-     
+        public ActionResult kullaniciDuzenle()
+        {
+            ViewBag.Kullanicilar = db.Kullanicilar.ToList();
+            return View();
+        }
+
+
         public ActionResult ilanListele()
         {
             ViewBag.ilanlar = db.Ilan.ToList();
