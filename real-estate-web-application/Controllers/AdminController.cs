@@ -177,17 +177,75 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public ActionResult konutDuzenle(int ilanID,Ilan ilanVeri, konutDetay detayVeri)
         {
-            var ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
-            var detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
-            
-            ilan = ilanVeri;
+            Ilan ilan = db.Ilan.Where(x => x.ilanID == ilanID).SingleOrDefault();
+            konutDetay detay = db.konutDetay.Where(x => x.ilanID == ilanID).SingleOrDefault();
+
+            ilan.aciklama = ilanVeri.aciklama;
             ilan.baslik = ilanVeri.baslik;
+            ilan.durum = ilanVeri.durum;
+            ilan.fiyat = ilanVeri.fiyat;
+            ilan.ILCE_ID = ilanVeri.ILCE_ID;
+            ilan.IL_ID = ilanVeri.IL_ID;
+            ilan.kategoriID = ilanVeri.kategoriID;
+            ilan.MAH_ID = ilanVeri.MAH_ID;
+            ilan.metrekare = ilanVeri.metrekare;
+            ilan.SEMT_ID = ilanVeri.SEMT_ID;
+            ilan.vitrin = ilanVeri.vitrin;
             string date = DateTime.Now.ToShortDateString();
             ilan.tarih = Convert.ToDateTime(date);
-            detay = detayVeri;
+
+            detay.aidat = detayVeri.aidat;
+            detay.alaturkaTuvalet = detayVeri.alaturkaTuvalet;
+            detay.amerikanMutfak = detayVeri.amerikanMutfak;
+            detay.anayol = detayVeri.anayol;
+            detay.ankastreMutfak = detayVeri.ankastreMutfak;
+            detay.araKat = detayVeri.araKat;
+            detay.asansor = detayVeri.asansor;
+            detay.bahceKati = detayVeri.bahceKati;
+            detay.balkon = detayVeri.balkon;
+            detay.banyoSayisi = detayVeri.banyoSayisi;
+            detay.belediye = detayVeri.belediye;
+            detay.binaYasi = detayVeri.binaYasi;
+            detay.bulunduguKat = detayVeri.bulunduguKat;
+            detay.cadde = detayVeri.cadde;
+            detay.cami = detayVeri.cami;
+            detay.dubleks = detayVeri.dubleks;
+            detay.dusakabin = detayVeri.dusakabin;
+            detay.esyali = detayVeri.esyali;
+            detay.fiberInternet = detayVeri.fiberInternet;
+            detay.goruntuluDiafon = detayVeri.goruntuluDiafon;
+            detay.guvenlik = detayVeri.guvenlik;
+            detay.hastane = detayVeri.hastane;
+            detay.havuz = detayVeri.havuz;
+            detay.hirsizAlarm = detayVeri.hirsizAlarm;
+            detay.isicam = detayVeri.isicam;
+            detay.isitma = detayVeri.isitma;
+            detay.isiYalitim = detayVeri.isiYalitim;
+            detay.kapaliGaraj = detayVeri.kapaliGaraj;
+            detay.kapici = detayVeri.kapici;
+            detay.katSayisi = detayVeri.katSayisi;
+            detay.krediyeUygun = detayVeri.krediyeUygun;
+            detay.laminat = detayVeri.laminat;
+            detay.market = detayVeri.market;
+            detay.minibus = detayVeri.minibus;
+            detay.odaSayisi = detayVeri.odaSayisi;
+            detay.okul = detayVeri.okul;
+            detay.otobusDuragi = detayVeri.otobusDuragi;
+            detay.otopark = detayVeri.otopark;
+            detay.oyunParki = detayVeri.oyunParki;
+            detay.park = detayVeri.park;
+            detay.sehirMerkezi = detayVeri.sehirMerkezi;
+            detay.sesYalitim = detayVeri.sesYalitim;
+            detay.siteIcerisinde = detayVeri.siteIcerisinde;
+            detay.somine = detayVeri.somine;
+            detay.sporAlani = detayVeri.sporAlani;
+            detay.takas = detayVeri.takas;
+            detay.uydu = detayVeri.uydu;
+            detay.yanginAlarm = detayVeri.yanginAlarm;
+            
             db.SaveChanges();
 
-
+            TempData["a"] = ilan.baslik + " Başlıklı İlan Güncellendi";
             return RedirectToAction("ilanListele");
         }
     }
