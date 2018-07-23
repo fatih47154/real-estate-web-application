@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using real_estate_web_application.Models;
+using System.Drawing;
+using System.IO;
 
 namespace real_estate_web_application.Controllers
 {
@@ -22,6 +24,51 @@ namespace real_estate_web_application.Controllers
             var a = goster.FirstOrDefault(x => x.siteID == 1);
             ViewBag.siteOzellikleri = a;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult siteOzellikleri(SiteOzellikleri veri, HttpPostedFileBase resim)
+        {
+            SiteOzellikleri degisecekVeri = db.SiteOzellikleri.Where(x => x.siteID == 1).SingleOrDefault();
+            if (resim != null)
+            {
+                Image img = Image.FromStream(resim.InputStream);
+
+                string url = "/images/" + Guid.NewGuid() + Path.GetExtension(resim.FileName);
+                img.Save(Server.MapPath(url));
+
+                degisecekVeri.email = veri.email;
+                degisecekVeri.ad = veri.ad;
+                degisecekVeri.cepTel = veri.cepTel;
+                degisecekVeri.telefon = veri.telefon;
+                degisecekVeri.hakkimizda = veri.hakkimizda;
+                degisecekVeri.misyon = veri.misyon;
+                degisecekVeri.adres = veri.adres;
+
+                Resim rsm = db.Resim.Where(x => x.resimID == veri.resimID).SingleOrDefault();
+                if (rsm == null)
+                {
+                    Resim yeniRsm = new Resim();
+                    yeniRsm.resimUrl = url;
+                    db.Resim.Add(yeniRsm);
+                    db.SaveChanges();
+                    degisecekVeri.resimID = yeniRsm.resimID;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    rsm.resimUrl = url;
+                    degisecekVeri.resimID = rsm.resimID;
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                degisecekVeri = veri;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("siteOzellikleri");
         }
 
         public ActionResult kullaniciListele()
@@ -126,7 +173,7 @@ namespace real_estate_web_application.Controllers
             return View();
         }
 
-        // Daha Bitmedi Ellemeyin
+
         [HttpPost]
         public ActionResult konutDuzenle(int ilanID,Ilan ilanVeri, konutDetay detayVeri)
         {

@@ -17,8 +17,23 @@ namespace real_estate_web_application.Controllers
         }
         public ActionResult Hakkimizda()
         {
-
-            return View();
+            List<SiteOzellikleri> site = db.SiteOzellikleri.ToList();            
+            return View(site);  
+        }
+        public ActionResult Kiralik()
+        {
+            List<Ilan> ilan = db.Ilan.ToList();
+            return View(ilan);
+        }
+        public ActionResult Satilik()
+        {
+            List<Ilan> ilan = db.Ilan.ToList();
+            return View(ilan);
+        }
+        public ActionResult Ilanlar()
+        {
+            List<Ilan> ilan = db.Ilan.ToList();
+            return View(ilan);
         }
     }
 }

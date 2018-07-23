@@ -30,8 +30,7 @@ namespace real_estate_web_application.Models
         [StringLength(50)]
         public string telefon { get; set; }
 
-        [StringLength(50)]
-        public string resimID { get; set; }
+        public int? resimID { get; set; }
 
         [StringLength(500)]
         public string hakkimizda { get; set; }
