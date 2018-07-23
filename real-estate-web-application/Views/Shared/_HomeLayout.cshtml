@@ -30,7 +30,7 @@
 
 
     <link rel="stylesheet" href="/Content/Home/Home2/style6488.css?Tema=">
-
+    @RenderSection("head", false);
 
     <script type="text/javascript">
 
@@ -140,7 +140,7 @@
                                         <tbody>
                                             <tr>
                                                 <td><img alt="" src="/Content/Home/Home2/site_document/files/resim/logo2png_85157.png" style="width: 60px; height: 60px;" /></td>
-                                              @RenderSection("head",false);
+                                             
                                             </tr>
                                         </tbody>
                                     </table>
@@ -207,7 +207,7 @@
                     </div>
                 </div>
             </header>
-            @RenderBody();
+            @RenderBody()
 
 
             <footer id="footer">
@@ -298,7 +298,7 @@
     <script src="../hemencdn.com/interface/platinum/js/main.js"></script>
 
 
-
+    @RenderSection("script", false)
 </body>
 
 <!-- Mirrored from emlakciplatinum.platinum.webdeneme.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 29 Jun 2018 06:44:40 GMT -->
