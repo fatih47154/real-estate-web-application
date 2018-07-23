@@ -1891,6 +1891,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Filter\securityFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2118,6 +2120,8 @@
     <Content Include="Views\Home\Kiralik.cshtml" />
     <Content Include="Views\Home\Satilik.cshtml" />
     <Content Include="Views\Home\Ilanlar.cshtml" />
+    <Content Include="Views\Home\ilanDetay.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2129,6 +2133,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
     <Folder Include="images\" />
+    <Folder Include="Login\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

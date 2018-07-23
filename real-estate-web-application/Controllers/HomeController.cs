@@ -27,13 +27,19 @@ namespace real_estate_web_application.Controllers
         }
         public ActionResult Satilik()
         {
-            List<Ilan> ilan = db.Ilan.ToList();
-            return View(ilan);
+            List<Ilan> satilikIlanlar = db.Ilan.Where(x => x.durum == "satilik").ToList();
+            ViewBag.satilikIlanlar = satilikIlanlar;
+            return View();
         }
         public ActionResult Ilanlar()
         {
             List<Ilan> ilan = db.Ilan.ToList();
             return View(ilan);
+        }
+
+        public ActionResult ilanDetay()
+        {
+            return View();
         }
     }
 }

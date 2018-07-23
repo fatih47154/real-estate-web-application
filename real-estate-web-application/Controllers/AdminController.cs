@@ -248,5 +248,10 @@ namespace real_estate_web_application.Controllers
             TempData["a"] = ilan.baslik + " Başlıklı İlan Güncellendi";
             return RedirectToAction("ilanListele");
         }
+        public ActionResult cikisYap()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
     }
 }
