@@ -81,9 +81,8 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public void kullaniciSil(int id)
         {
-            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);            
-            
-            
+            Kullanicilar k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);          
+               
             try
             {
                 
@@ -95,12 +94,33 @@ namespace real_estate_web_application.Controllers
             {
 
                 TempData["b"] = "Kullanıcı Silinirken Bir Hata Ortaya Çıktı";
-            }
-           
-
+            }          
         }
 
-     
+        public ActionResult kullaniciDuzenle(int id)
+        {
+            ViewBag.guncellenenAdmin = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);            
+           
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin)
+        {
+            Kullanicilar kln = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
+            kln.ad = guncellenenAdmin.ad;
+            kln.soyad = guncellenenAdmin.soyad;
+            kln.kullaniciAdi = guncellenenAdmin.kullaniciAdi;
+            kln.telefon = guncellenenAdmin.telefon;
+            TempData["b"] = kln.ad+" "+kln.soyad+" isimli Admin Güncellendi";
+            db.SaveChanges();            
+            return RedirectToAction("kullaniciListele");
+            
+        }
+
+
+
+
         public ActionResult ilanListele()
         {
             ViewBag.ilanlar = db.Ilan.ToList();
@@ -145,25 +165,47 @@ namespace real_estate_web_application.Controllers
             return RedirectToAction("ilanListele");
         }
 
-        public ActionResult konutSil(int ilanID)
+        
+
+        //public ActionResult konutSil(int ilanID)
+        //{
+        //    Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
+        //    konutDetay detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
+
+        //    try
+        //    {
+        //        db.Ilan.Remove(ilan);
+        //        db.konutDetay.Remove(detay);
+        //        db.SaveChanges();
+        //        TempData["a"] = ilan.baslik + " Başlıklı İlan Silindi";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        TempData["a"] = "İlan Silinirken Bir Hata Ortaya Çıktı";
+        //    }
+
+        //    return RedirectToAction("ilanListele");
+        //}
+
+        [HttpPost]
+        public void ilanSil(int id)
         {
-            Ilan ilan = db.Ilan.FirstOrDefault(x => x.ilanID == ilanID);
-            konutDetay detay = db.konutDetay.FirstOrDefault(x => x.ilanID == ilanID);
+            Ilan kx = db.Ilan.FirstOrDefault(x => x.ilanID == id);
 
             try
             {
-                db.Ilan.Remove(ilan);
-                db.konutDetay.Remove(detay);
+
+                TempData["a"] = kx.baslik + " başlıklı ilan Silindi";
+                db.Ilan.Remove(kx);
                 db.SaveChanges();
-                TempData["a"] = ilan.baslik + " Başlıklı İlan Silindi";
             }
             catch (Exception)
             {
+
                 TempData["a"] = "İlan Silinirken Bir Hata Ortaya Çıktı";
             }
-
-            return RedirectToAction("ilanListele");
         }
+        
 
         public ActionResult konutDuzenle(int ilanID)
         {
@@ -186,6 +228,7 @@ namespace real_estate_web_application.Controllers
         {
             Ilan ilan = db.Ilan.Where(x => x.ilanID == ilanID).SingleOrDefault();
             konutDetay detay = db.konutDetay.Where(x => x.ilanID == ilanID).SingleOrDefault();
+            ilan = ilanVeri;
 
             ilan.aciklama = ilanVeri.aciklama;
             ilan.baslik = ilanVeri.baslik;
