@@ -97,13 +97,28 @@ namespace real_estate_web_application.Controllers
             }          
         }
 
-        public ActionResult kullaniciDuzenle()
+        public ActionResult kullaniciDuzenle(int id)
         {
-            ViewBag.Kullanicilar = db.Kullanicilar.ToList();
+            ViewBag.guncellenenAdmin = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);            
+           
             return View();
         }
 
-       
+        [HttpPost]
+        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin)
+        {
+            Kullanicilar kln = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
+            kln.ad = guncellenenAdmin.ad;
+            kln.soyad = guncellenenAdmin.soyad;
+            kln.kullaniciAdi = guncellenenAdmin.kullaniciAdi;
+            kln.telefon = guncellenenAdmin.telefon;
+            TempData["b"] = kln.ad+" "+kln.soyad+" isimli Admin Güncellendi";
+            db.SaveChanges();            
+            return RedirectToAction("kullaniciListele");
+            
+        }
+
+
 
 
         public ActionResult ilanListele()
@@ -191,6 +206,7 @@ namespace real_estate_web_application.Controllers
         {
             Ilan ilan = db.Ilan.Where(x => x.ilanID == ilanID).SingleOrDefault();
             konutDetay detay = db.konutDetay.Where(x => x.ilanID == ilanID).SingleOrDefault();
+            ilan = ilanVeri;
 
             ilan.aciklama = ilanVeri.aciklama;
             ilan.baslik = ilanVeri.baslik;

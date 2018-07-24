@@ -55,8 +55,9 @@
                                             <td>@a.ad</td>
                                             <td>@a.soyad</td>
                                             <td><span class="label label-info label-mini">@a.kullaniciAdi</span></td>
-                                            <td>@a.telefon</td>
-                                            <td><button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button></td>
+                                            <td>@a.telefon</td>                                            
+                                            <td>                                                
+                                             <a href="kullaniciDuzenle/@a.kullaniciID" class="btn btn-primary btn-xs"><i class="icon-pencil"></i></a></td>
                                         </tr>
                                     }
                                 }
@@ -67,7 +68,6 @@
                 </div>
             </div>
 
-           ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
             <br /><br />
 
             <!--KULLANICI LİSTESİ-->
@@ -99,7 +99,7 @@
                                             <td>@a.telefon</td>
 
                                             <td>
-                                                <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i></button>
+                                                
                                                 <a href="#" class="btn btn-danger btn-xs modalAc" data-toggle="modal" data-kullaniciad="@a.ad" data-kullanicisoyad="@a.soyad" data-kullaniciid="@a.kullaniciID" data-target="#modalConfirmDelete"><i class="icon-trash"></i></a>
                                                 <!--Modal: modalConfirmDelete-->
                                                 <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
