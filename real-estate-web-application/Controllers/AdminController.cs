@@ -103,6 +103,8 @@ namespace real_estate_web_application.Controllers
             return View();
         }
 
+       
+
 
         public ActionResult ilanListele()
         {
