@@ -47,21 +47,90 @@
                                 <td>@item.tarih</td>
                                 <td>@item.aciklama</td>
                                 <td>@item.durum</td>
-                                <td>@item.Kategori.kategoriAdi</td>
+                                <td>@item.kategoriID</td>
                                 <td>
                                     <a href="@Url.Action("konutDuzenle" , new {item.ilanID})" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    <a href="@Url.Action("konutSil" , new {item.ilanID})" class="btn btn-danger btn-xs" onclick="return confirmDel()"><i class="glyphicon glyphicon-remove"></i></a>
+                                    
+                                    
+
+                                    <a class="btn btn-danger btn-xs modalAc" data-toggle="modal" data-ilanbaslik="@item.baslik"  data-ilanid="@item.ilanID" data-target="#modalConfirmDelete"><i class="icon-trash"></i></a>
+                                    <!--Modal: modalConfirmDelete-->
+                                    <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                                            <!--Content-->
+                                            <div class="modal-content text-center">
+                                                <!--Header-->
+                                                <div class="modal-header d-flex justify-content-center">
+                                                    <p class="heading">İlan Sil</p>
+                                                </div>
+
+                                                <!--Body-->
+                                                <div class="modal-body">
+
+                                                    <p></p>
+
+                                                </div>
+
+                                                <!--Footer-->
+                                                <div class="modal-footer flex-center">
+                                                    <a class="btn  btn-success ilanSil">Evet</a>
+                                                    <a class="btn  btn-danger waves-effect" data-dismiss="modal">İptal</a>
+                                                </div>
+                                            </div>
+                                            <!--/.Content-->
+                                        </div>
+                                    </div>
+                                    <!--Modal: modalConfirmDelete-->
+
                                 </td>
                             </tr>
                     }
-
                 </tbody>
             </table>
+
+           
+
+
         </section>
     </div>
 </div>
 
-<script type="text/javascript">
+
+@section script{
+
+    <script src="~/Content/Admin/js/jquery-1.8.3.min.js"></script>
+
+    <script>
+                    $(".modalAc").click(function () {
+                        var ilanBaslik = $(this).data("ilanbaslik");
+                        $(".modal-body>p").html(ilanBaslik + " başlıklı ilan silinsin mi?");
+                        var ilanID = $(this).data("ilanid");
+                        $(".ilanSil").data("ilanID", ilanID) //modal butonuna basıldığında id'yi çeker bu id'yide bu satırda kullaniciSil classlı butona yolluyoruz
+                        $(".ilanSil").data("ilanBaslik", ilanBaslik)
+
+                    });
+                    $(".ilanSil").click(function () {  //kullaniciSil classlı buton çalıştığında ajax çalışacak ve silencek admini controllers'a yolllar
+                        var ilanID = $(this).data("ilanID");
+                        var ilanBaslik = $(this).data("ilanBaslik");
+
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Admin/ilanSil/" +ilanID,
+                            success: function () {
+                                window.location.replace("/Admin/ilanListele");
+                            },
+                            error: function () {
+                                alert("İlan Silinirken Bir Hata Ortaya Çıktı");
+                            }
+                        });
+                    });
+    </script>
+}
+
+
+@*<script type="text/javascript">
         function confirmDel() {
             var agree = confirm("Silmek İstiyor musunuz ?");
             if (agree) {
@@ -71,4 +140,8 @@
                 return false;
             }
         }
-</script>
+</script>*@
+
+
+  
+    
