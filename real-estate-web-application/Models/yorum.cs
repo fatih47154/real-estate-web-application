@@ -14,7 +14,7 @@ namespace real_estate_web_application.Models
 
         public int yorumID { get; set; }
 
-        public bool? onay { get; set; }
+        public string onay { get; set; }
 
         public int? ilanID { get; set; }
 

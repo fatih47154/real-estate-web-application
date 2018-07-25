@@ -27,15 +27,15 @@
                         @foreach (yorum item in ViewBag.TumYorumlar)
                         {
                         <tr>
-                            <td>@item.</td>
+                            <td>@item.Kullanicilar.ad<span> </span>@item.Kullanicilar.soyad</td>
                             <td>@item.icerik</td>
                             <td>@item.eklenmeTarihi</td>
-                            <td><a href="/Home/HaberDetay/@item.yorumID" target="_blank"> @item.ilanID</a></td>
+                            <td><a href="/Home/HaberDetay/@item.yorumID" target="_blank"> @item.Ilan.baslik</a></td>
 
-                            @if (item.onay == false)
+                            @if (item.onay == "False")
                             {
                                 <td>
-                                    <a href="YorumOnay/@item.yorumID" class="btn btn-success btn-xs"><i class="icon-ok">  Onay</i></a>
+                                    ><a href="YorumOnay/@item.yorumID" class="btn btn-success btn-xs"><i class="icon-ok">  Onay</i></a>
                                 </td>
                             }
                             else

@@ -332,17 +332,18 @@ namespace real_estate_web_application.Controllers
             db.SaveChanges();
             return RedirectToAction("YorumListesi");
         }
+       
         public ActionResult YorumOnay(int id)
         {
-            yorum y = db.yorum.FirstOrDefault(x => x.yorumID == id);
-            y.onay = true;
+            yorum y = db.yorum.FirstOrDefault(x => x.yorumID==id);
+            y.onay ="True";
             db.SaveChanges();
             return RedirectToAction("YorumListesi");
         }
         public ActionResult YorumOnayGeri(int id)
         {
             yorum y = db.yorum.FirstOrDefault(x => x.yorumID == id);
-            y.onay = false;
+            y.onay = "False";
             db.SaveChanges();
             return RedirectToAction("YorumListesi");
         }
