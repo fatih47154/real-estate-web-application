@@ -46,37 +46,37 @@
                     <div data-appear-animation="flash" class="col-md-12">
                         <br />
                         <h2 style="color:#000000">
-                            Yeni Ürünler
+                            Yeni İlanlar
                         </h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-    <ul class="products product-thumb-info-list tur_urun_4" data-plugin-masonry="" data-plugin-options='{"layoutMode": "fitRows"}'>
-     
-      @foreach (Ilan item in ViewBag.iln)
-      {
+                            <ul class="products product-thumb-info-list tur_urun_4" data-plugin-masonry="" data-plugin-options='{"layoutMode": "fitRows"}'>
 
-          if (item.vitrin == true)
-          {
-                <li data-appear-animation="flash" class="blid_1328 col-md-3 col-sm-6 col-xs-12 product">
-                    <a href="uskudar-satilik-daire/p/1328.html" title="&#220;sk&#252;dar Sat&#305;l&#305;k Daire">
-                        <span class="onsale menuarkaplan">@item.fiyat </span>
-                        <span class="product-thumb-info thumb-info-no-zoom">
-                            <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/uskudar-satilik-daire-1415442751_s.jpg">
-                            <span class="product-thumb-info-content">
-                                @item.baslik
-                            </span>
-                        </span>
-                    </a>                    
-                </li>   
-          }
-      }
-                   </ul>               
-                  </div> 
-                 </div>
-               </div>
+                                @foreach (Ilan item in ViewBag.iln)
+                                 {
+
+                                    if (item.vitrin == true)
+                                    {
+                                        <li data-appear-animation="flash" class="blid_1328 col-md-3 col-sm-6 col-xs-12 product">
+                                            <a href="ilanDetay/@item.ilanID" title="&#220;sk&#252;dar Sat&#305;l&#305;k Daire">
+                                                <span class="onsale menuarkaplan">@item.fiyat </span>
+                                                <span class="product-thumb-info thumb-info-no-zoom">
+                                                    <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/uskudar-satilik-daire-1415442751_s.jpg">
+                                                    <span class="product-thumb-info-content">
+                                                        @item.baslik
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    }
+                                 }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row gosterim_tumu">
                 <div data-appear-animation="flash" class="col-md-12 center">
@@ -87,7 +87,49 @@
             </div>
         </div>
     </section>
-    </div>    
+
+    <section class="sec_mainbox con_mb_6 ui_mb_316 parallax section section-parallax mb-none" data-stellar-background-ratio="0.5" style="background-image: url('/Content/Home/Home2/site_document/kutuResim/blok-1312017ZWL35.jpg');">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12 center"><br /><br />
+                    <h2 data-appear-animation="fadeInUp" style="color:#212121">
+                        Kalite ve G&#252;venin Tek Adresi
+                    </h2>
+                    <p data-appear-animation="fadeInUp" class="blok_aciklama" style="color:#212121">
+                        Sayılarla bizi tanıyın
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="counters" style="color:#212121">
+                    <div data-appear-animation="fadeInUp" class="blid_95 col-md-4 col-sm-6">
+                        <div class="counter">
+                            <i class="fa fa-group" style="color:#575757;"></i>
+                            <strong style="color:#575757;" data-to="200" data-append="+">@ViewBag.kullaniciSayisi</strong>
+                            <label style="color:#575757;">Kullanıcı Sayısı</label>
+                        </div>
+                    </div>
+                    <div data-appear-animation="fadeInUp" class="blid_97 col-md-4 col-sm-6">
+                        <div class="counter">
+                            <i class="fa fa-map-marker" style="color:#575757;"></i>
+                            <strong style="color:#575757;" data-to="81" data-append="+">@ViewBag.ilanSayisi</strong>
+                            <label style="color:#575757;">İlan Sayısı</label>
+                        </div>
+                    </div>
+                    <div data-appear-animation="fadeInUp" class="blid_96 col-md-4 col-sm-6">
+                        <div class="counter">
+                            <i class="fa fa-trophy" style="color:#575757;"></i>
+                            <strong style="color:#575757;" data-to="50" data-append="+">@ViewBag.yorumSayisi</strong>
+                            <label style="color:#575757;">Yorum Sayısı</label>
+                        </div>
+                    </div>
+                </div>             
+            </div><br /><br />  
+            </div>
+    </section>
+</div>
+        
 
 
 

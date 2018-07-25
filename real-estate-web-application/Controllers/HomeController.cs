@@ -13,8 +13,15 @@ namespace real_estate_web_application.Controllers
         emlakDB db = new emlakDB();
         public ActionResult Index()
         {
-           var ilanlar = db.Ilan.ToList();
-           ViewBag.iln = ilanlar;           
+            var kln = db.Kullanicilar.ToList();            
+            var ilanlar = db.Ilan.ToList();
+            var yorum = db.yorum.ToList();
+            ViewBag.kullaniciSayisi = kln.LongCount();
+            ViewBag.ilanSayisi = ilanlar.LongCount();
+            ViewBag.yorumSayisi = yorum.LongCount();           
+            ViewBag.iln = ilanlar;
+            
+                      
                                  
             return View();
         }
