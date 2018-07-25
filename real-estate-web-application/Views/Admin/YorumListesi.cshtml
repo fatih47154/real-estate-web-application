@@ -13,6 +13,18 @@
             <header class="panel-heading">
                 Yorum Listesi
             </header>
+            @{
+                if (TempData["a"] != null)
+                {
+                    <br />
+                    <div class="col-lg-12">
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>@TempData["a"]</strong>
+                        </div>
+                    </div>
+                }
+            }
             <table class="table table-striped table-advance table-hover">
                 <thead>
                     <tr>
@@ -23,40 +35,99 @@
                         <th>İlan</th>
                         <th>Onay</th>
                         <th>Sil</th>
-
-                        @foreach (yorum item in ViewBag.TumYorumlar)
-                        {
+                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (yorum item in ViewBag.TumYorumlar)
+                    {
                         <tr>
                             <td>@item.Kullanicilar.ad<span> </span>@item.Kullanicilar.soyad</td>
                             <td>@item.icerik</td>
                             <td>@item.eklenmeTarihi</td>
-                            <td><a href="/Home/HaberDetay/@item.yorumID" target="_blank"> @item.Ilan.baslik</a></td>
+                            <td>@item.Ilan.baslik</td>
 
-                            @if (item.onay == "False")
+                            @if (item.onay == false)
                             {
                                 <td>
-                                    ><a href="YorumOnay/@item.yorumID" class="btn btn-success btn-xs"><i class="icon-ok">  Onay</i></a>
+                                    <a href="YorumOnay/@item.yorumID" class="btn btn-success btn-xs"><i class="icon-ok">Onay</i></a>
                                 </td>
                             }
                             else
                             {
                                 <td>
-                                    <a href="YorumOnayGeri/@item.yorumID" class="btn btn-primary btn-xs"><i class="icon-reply">  Geri Al</i></a>
+                                    <a href="YorumOnayGeri/@item.yorumID" class="btn btn-primary btn-xs"><i class="icon-reply">Geri Al</i></a>
                                 </td>
                             }
                             <td>
-                                <a href="YorumSil/@item.yorumID" class="btn btn-danger btn-xs"><i class="icon-trash "></i></a>
+                                <a href="#" class="btn btn-danger btn-xs modalAc" data-toggle="modal" data-yorumicerik="@item.icerik" data-yorumid="@item.yorumID" data-target="#modalConfirmDelete"><i class="icon-trash"></i></a>
+                                <!--Modal: modalConfirmDelete-->
+                                <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                                        <!--Content-->
+                                        <div class="modal-content text-center">
+                                            <!--Header-->
+                                            <div class="modal-header d-flex justify-content-center">
+                                                <p class="heading">Yorum Sil</p>
+                                            </div>
+
+                                            <!--Body-->
+                                            <div class="modal-body">
+
+                                                <p></p>
+
+                                            </div>
+
+                                            <!--Footer-->
+                                            <div class="modal-footer flex-center">
+                                                <a class="btn  btn-success yorumSil">Evet</a>
+                                                <a class="btn  btn-danger waves-effect" data-dismiss="modal">İptal</a>
+                                            </div>
+                                        </div>
+                                        <!--/.Content-->
+                                    </div>
+                                </div>
+                                <!--Modal: modalConfirmDelete--> 
                             </td>
                         </tr>
-                         }
+                    }
 
-
-
-                        </tr>
-                    </thead>
-                <tbody></tbody>
+                </tbody>
             </table>
+
         </section>
+
+        @section script{
+
+            <script src="~/Content/Admin/js/jquery-1.8.3.min.js"></script>
+
+            <script>
+                    $(".modalAc").click(function () {
+                        var yorumİcerik = $(this).data("yorumicerik");                        
+                        $(".modal-body>p").html(yorumİcerik + " içerikli yorum silinsin mi?");
+                        var yorumID = $(this).data("yorumid");
+                        $(".yorumSil").data("yorumID", yorumID) //modal butonuna basıldığında id'yi çeker bu id'yide bu satırda kullaniciSil classlı butona yolluyoruz
+                        $(".yorumSil").data("yorumİcerik", yorumİcerik)
+                        
+                    });
+                    $(".yorumSil").click(function () {  //kullaniciSil classlı buton çalıştığında ajax çalışacak ve silencek admini controllers'a yolllar
+                        var yorumID = $(this).data("yorumID");
+                        var yorumİcerik = $(this).data("yorumİcerik");
+                        
+
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Admin/YorumSil/" + yorumID,
+                            success: function () {
+                                window.location.replace("/Admin/YorumListesi");
+                            },
+                            error: function () {
+                                alert("Yorum Silinirken Bir Hata Ortaya Çıktı");
+                            }
+                        });
+                    });
+            </script>
+        }
     </div>
 </div>
 
