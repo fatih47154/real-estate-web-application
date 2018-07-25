@@ -13,6 +13,9 @@ namespace real_estate_web_application.Controllers
         emlakDB db = new emlakDB();
         public ActionResult Index()
         {
+           var ilanlar = db.Ilan.ToList();
+           ViewBag.iln = ilanlar;           
+                                 
             return View();
         }
         public ActionResult Hakkimizda()

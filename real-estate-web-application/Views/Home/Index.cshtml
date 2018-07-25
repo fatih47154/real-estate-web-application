@@ -11,7 +11,8 @@
 
 }
 
-
+@using real_estate_web_application.Models;
+<!--Slider-->
 <div id="wowslider-container1">
     <div class="ws_images">
         <ul>
@@ -33,6 +34,68 @@
     </div><div class="ws_script" style="position:absolute;left:-99%"><a href="/http://wowslider.net">html slideshow</a> by WOWSlider.com v8.8</div>
     <div class="ws_shadow"></div>
 </div>
+
+
+
+<!-- OrtaAlan1 Başlangıç -->
+<div id="ctl00_cph1_OrtaAlan_panel_orta">
+    <section class="sec_products con_ps_4 ui_ps_45 parallax section section-parallax section-center mb-none" data-stellar-background-ratio="0.5" style="background-color:#FFFFFF;">
+        <div class="container">
+            <div class="shop">
+                <div class="row">
+                    <div data-appear-animation="flash" class="col-md-12">
+                        <br />
+                        <h2 style="color:#000000">
+                            Yeni Ürünler
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+    <ul class="products product-thumb-info-list tur_urun_4" data-plugin-masonry="" data-plugin-options='{"layoutMode": "fitRows"}'>
+     
+      @foreach (Ilan item in ViewBag.iln)
+      {
+
+          if (item.vitrin == true)
+          {
+                <li data-appear-animation="flash" class="blid_1328 col-md-3 col-sm-6 col-xs-12 product">
+                    <a href="uskudar-satilik-daire/p/1328.html" title="&#220;sk&#252;dar Sat&#305;l&#305;k Daire">
+                        <span class="onsale menuarkaplan">@item.fiyat </span>
+                        <span class="product-thumb-info thumb-info-no-zoom">
+                            <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/uskudar-satilik-daire-1415442751_s.jpg">
+                            <span class="product-thumb-info-content">
+                                @item.baslik
+                            </span>
+                        </span>
+                    </a>                    
+                </li>   
+          }
+      }
+                   </ul>               
+                  </div> 
+                 </div>
+               </div>
+            </div>
+            <div class="row gosterim_tumu">
+                <div data-appear-animation="flash" class="col-md-12 center">
+                    <a class="btn btn-primary btn-lg" href="/Home/Ilanlar" title="T&#252;m&#252;n&#252; G&#246;ster">
+                        T&#252;m&#252;n&#252; G&#246;ster
+                    </a><br /><br />
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>    
+
+
+
+
+
+
+
+
 
 @section script{
     <script type="text/javascript" src="/engine2/wowslider.js"></script>
