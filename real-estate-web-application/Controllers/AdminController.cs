@@ -14,7 +14,7 @@ namespace real_estate_web_application.Controllers
         emlakDB db = new emlakDB();
         // GET: Admin
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 
