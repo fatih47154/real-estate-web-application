@@ -110,6 +110,7 @@ namespace real_estate_web_application.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public ActionResult yorumYap(yorum yorumVeri)
         {
             yorum yeniYorum  = new yorum();
