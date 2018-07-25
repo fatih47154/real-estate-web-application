@@ -60,9 +60,73 @@ namespace real_estate_web_application.Controllers
                 resimm.Add(item);
             }
             ViewBag.resim = resimm;
-            List<Ilan> yorumlar = db.Ilan.Where(x => x.ilanID == id).ToList();
-            ViewBag.yorumlar = yorumlar;
+            List<yorum> yorumlar = new List<yorum>();
+            yorumlar = db.yorum.Where(x => x.ilanID == id).ToList();
+            if(yorumlar.Count == 0)
+            {
+                TempData["a"] = null;
+            }
+            else
+            {
+                TempData["a"] = "1";
+                ViewBag.yorumlar = yorumlar;
+            }
+
             return View();
         }
+
+        public ActionResult kullaniciKayit(Kullanicilar kullaniciVeri)
+        {
+            var k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciAdi == kullaniciVeri.kullaniciAdi);
+            if(k == null)
+            {
+                Kullanicilar yeniKullanici = new Kullanicilar();
+                yeniKullanici = kullaniciVeri;
+                db.Kullanicilar.Add(yeniKullanici);
+                db.SaveChanges();
+                TempData["a"] = kullaniciVeri.ad + " İsimli Kullanıcı Kaydedildi .";
+            }
+            else
+            {
+                TempData["a"] = kullaniciVeri.kullaniciAdi + " Kullanıcı Adı Kullanılıyor .";
+            }
+            return RedirectToAction("");
+        }
+
+        [HttpPost]
+        public ActionResult girisYap(string kullaniciAdi, string sifre)
+        {
+            emlakDB db = new emlakDB();
+            Kullanicilar k = db.Kullanicilar.Where(x => x.kullaniciAdi == kullaniciAdi && x.sifre == sifre && x.admin == true).SingleOrDefault();
+            if (k == null)
+            {
+                TempData["a"] = "Kullanıcı Bulunamadı !!";
+                return View();
+            }
+            else
+            {
+                Session["HomeKullanici"] = k;
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        public ActionResult cikisYap()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult yorumYap(yorum yorumVeri)
+        {
+            yorum yeniYorum  = new yorum();
+            string date = DateTime.Now.ToShortDateString();
+            yeniYorum = yorumVeri;
+            yeniYorum.eklenmeTarihi = Convert.ToDateTime(date);
+            db.yorum.Add(yeniYorum);
+            db.SaveChanges();
+            return RedirectToAction("ilanDetay");
+        }
+
+
     }
 }

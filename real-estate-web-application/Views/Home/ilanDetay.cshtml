@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 @using real_estate_web_application.Models;
-
+@{
+    Kullanicilar k = (Kullanicilar)Session["HomeKullanici"];
+}
 @section head{
 
     <!-- Start WOWSlider.com HEAD section -->
@@ -960,9 +962,8 @@
                                         </h3>
 
                                         <div class="comment-list">
-
                                             @foreach (yorum yrm in ViewBag.yorumlar)
-                                            {
+                                                {
                                                 <div id="comment-176" class="comment byuser comment-author-riva-moser even thread-even depth-1">
                                                     <article id="div-comment-176" class="comment-body">
                                                         <footer class="comment-meta">
@@ -983,21 +984,21 @@
                                                         </div><!-- .comment-content -->
 
                                                     </article><!-- .comment-body -->
-                                                </div>
-                                            }
+                                                    </div>
+                                                    }
+                                               } 
                                             <!-- #comment-## -->
 
                                         </div>
                                         <div id="respond" class="comment-respond">
                                             <h3 id="reply-title" class="comment-reply-title">Yorum Yap <small><a rel="nofollow" id="cancel-comment-reply-link" href="/Content/Home/index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-                                            <form action="/Home/YorumYap" method="post" class="comment-form">
+                                            <form action="yorumYap" method="post" class="comment-form">
                                                 <p class="comment-form">
                                                     <label for="comment">Yorum</label>
-                                                    <input class="hidden" name="id" value="@Model.id" />
-                                                    <textarea id="validationDefault01" name="comment" class="form-control" rows="5" required></textarea>
-                                                </p><p class="comment-form-author">
-                                                    <label for="author">Adınız</label> <span> (Bu alanı boş bırakırsanız adınız gizli kullanıcı olarak görünür.) </span>
-                                                    <input name="author" type="text" class="form-control">
+                                                    <input class="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
+                                                    <input class="hidden" name="onay" value="false" />
+                                                    <input class="hidden" name="kullaniciID" value="@k.kullaniciID" />
+                                                    <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>
                                                 </p>
                                                 <p class="form-submit">
                                                     <input type="submit" class="btn btn-default">
