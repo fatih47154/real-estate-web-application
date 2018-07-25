@@ -5,7 +5,8 @@
 }
 
 @using real_estate_web_application.Models;
-@{   }
+@section head{
+        }
 
 <div class="row">
     <div class="col-lg-12">
@@ -15,7 +16,7 @@
                 <br />
             </header>
             <div class="panel-body">
-                <form class="form-horizontal tasi-form" method="post" action="konutEkle">
+                <form class="form-horizontal tasi-form" method="post" action="konutEkle" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Başlık</label>
                         <div class="col-sm-10">
@@ -53,7 +54,7 @@
                                 <option value="false">Vitrinde Değil</option>
                             </select>
                         </div>
-                    </div>                   
+                    </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Durumu</label>
@@ -88,7 +89,7 @@
                                 {
                                     <option value="@item.IL_ID">@item.IL_ADI</option>
                                 }
-                               
+
                             </select>
                         </div>
                     </div>
@@ -194,13 +195,43 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 col-sm-2 control-label">Resim Seç</label>
+                        <label class="col-sm-2 col-sm-2 control-label">Vitrin Resmini Seç</label>
                         <div class="col-md-10">
-                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true">
-                                <option value="default">Durum Seç</option>
-                                <option value="satilik">Satılık</option>
-                                <option value="kiralik">Kiralık</option>
-                            </select>
+                            <div class="form-group">
+                                <input type="file" name="vitrinResim">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">1.Resim Seç</label>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="file" name="resim1">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">2.Resim Seç</label>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="file" name="resim2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">3.Resim Seç</label>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="file" name="resim3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">4.Resim Seç</label>
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <input type="file" name="resim4">
+                            </div>
                         </div>
                     </div>
 
@@ -329,7 +360,7 @@
                             </div>
                             <div class="col-lg-3">
                                 <label class="label_check" for="checkbox-20">
-                                    <input name="uydu" id="checkbox-20" value="true" type="checkbox" /> Uydu 
+                                    <input name="uydu" id="checkbox-20" value="true" type="checkbox" /> Uydu
                                     <input type="hidden" value="false" name="uydu" />
                                  </label>
                             </div>

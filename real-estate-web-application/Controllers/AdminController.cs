@@ -138,10 +138,10 @@ namespace real_estate_web_application.Controllers
         }
 
         [HttpPost]
-        public ActionResult konutEkle(Ilan ilanVeri,konutDetay detayVeri)
+        public ActionResult konutEkle(Ilan ilanVeri,konutDetay detayVeri,HttpPostedFileBase vitrinResim, HttpPostedFileBase resim1, HttpPostedFileBase resim2, HttpPostedFileBase resim3, HttpPostedFileBase resim4)
         {
-            try
-            {
+          
+                
                 string date = DateTime.Now.ToShortDateString();
                 konutDetay yeniKonutDetay = new konutDetay();
                 yeniKonutDetay = detayVeri;
@@ -152,15 +152,31 @@ namespace real_estate_web_application.Controllers
                 yeniIlan = ilanVeri;
                 yeniIlan.tarih = Convert.ToDateTime(date);
 
+                List<HttpPostedFileBase> resimler = new List<HttpPostedFileBase>();
+                resimler.Add(vitrinResim);
+                resimler.Add(resim1);
+                resimler.Add(resim2);
+                resimler.Add(resim3);
+                resimler.Add(resim4);
+
+                foreach (var item in resimler)
+                {
+                    Image img = Image.FromStream(item.InputStream);
+                    string url = "/images/" + Guid.NewGuid() + Path.GetExtension(item.FileName);
+                    img.Save(Server.MapPath(url));
+
+                    Resim yeniRsm = new Resim();
+                    yeniRsm.resimUrl = url;
+                    yeniRsm.ilanID = ilanVeri.ilanID;
+                    db.Resim.Add(yeniRsm);
+                }
+
                 db.Ilan.Add(yeniIlan);
                 db.SaveChanges();
 
                 TempData["a"] = ilanVeri.baslik+" Başlıklı İlan Eklendi.";
-            }
-            catch (Exception)
-            {
-                TempData["a"] = "İlan Silinirken Bir Hata Ortaya Çıktı";
-            }
+            
+            
 
             return RedirectToAction("ilanListele");
         }

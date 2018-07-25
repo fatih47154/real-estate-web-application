@@ -43,5 +43,7 @@ namespace real_estate_web_application.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kullanicilar> Kullanicilar { get; set; }
+
+        public virtual Resim Resim { get; set; }
     }
 }

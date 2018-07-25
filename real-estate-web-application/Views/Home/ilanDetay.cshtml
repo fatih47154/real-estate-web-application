@@ -3,12 +3,14 @@
     ViewBag.Title = "ilanDetay";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
+@using real_estate_web_application.Models;
 
 @section head{
 
     <!-- Start WOWSlider.com HEAD section -->
 <link rel="stylesheet" type="text/css" href="/engine1/style.css" />
 <script type="text/javascript" src="/engine1/jquery.js"></script>
+
 <!-- End WOWSlider.com HEAD section -->
 
     }
@@ -27,7 +29,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 style="font-size:40px;color:#FEEA0D">
-                        &#220;sk&#252;dar Sat&#305;l&#305;k Daire
+                        @ViewBag.ilan.baslik
                     </h1>
                     <ul class="breadcrumb">
                         <li>
@@ -51,9 +53,10 @@
                             <div id="wowslider-container1">
                                 <div class="ws_images">
                                     <ul>
-                                        <li><img src="/data1/images/avcilarsatilikdaire600470407_b.jpg" alt="avcilar-satilik-daire-600470407_b" title="avcilar-satilik-daire-600470407_b" id="wows1_0" /></li>
-                                        <li><img src="/data1/images/bagcilardakiralikdaire2038455565_s.jpg" alt="responsive slider" title="bagcilarda-kiralik-daire-2038455565_s" id="wows1_1" /></li>
-                                        <li><img src="/data1/images/bakirkoydekiralikdaire1537333516_b.jpg" alt="bakirkoyde-kiralik-daire-1537333516_b" title="bakirkoyde-kiralik-daire-1537333516_b" id="wows1_2" /></li>
+                                        @foreach (var item in ViewBag.resim)
+                                        {
+                                            <li><img src="@item.resimUrl" alt="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" title="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" id="wows1_0" /></li>
+                                        }
                                     </ul>
                                 </div>
                                 
@@ -76,10 +79,10 @@
                                                     <section class="panel">
 
                                                         <ul class="nav nav-pills nav-stacked">
-                                                            <li><a href="javascript:;"> <i class="icon-time"></i> Mail Inbox <span class="label label-primary pull-right r-activity">19</span></a></li>
-                                                            <li><a href="javascript:;"> <i class="icon-calendar"></i> Recent Activity <span class="label label-info pull-right r-activity">11</span></a></li>
-                                                            <li><a href="javascript:;"> <i class="icon-bell-alt"></i> Notification <span class="label label-warning pull-right r-activity">03</span></a></li>
-                                                            <li><a href="javascript:;"> <i class="icon-envelope-alt"></i> Message <span class="label label-success pull-right r-activity">10</span></a></li>
+                                                            <li><a href="javascript:;"> <img width="20" height="20" src="@ViewBag.siteDetay.Resim.resimUrl" /><span>&nbsp;</span> @ViewBag.siteDetay.ad </a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-male"></i> Yetkili Kişi : @ViewBag.admin.ad<span> </span>@ViewBag.admin.soyad </a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-phone"></i> Sabit Telefon : @ViewBag.siteDetay.telefon </a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-mobile-phone"></i> Cep Telefonu : @ViewBag.siteDetay.cepTel </a></li>
                                                         </ul>
 
                                                     </section>
@@ -947,97 +950,63 @@
                         <div class="col-md-12" data-appear-animation="flash">
                             <div class="Blok" id="urunler_siparis">
                                 <!-- Blok Başlık -->
-                                <div class="heading heading-border heading-middle-border heading-middle-border-center"><h2>Sipariş Ver</h2></div>
+                                <div class="heading heading-border heading-middle-border heading-middle-border-center"><h2>Yorum Yap</h2></div>
                                 <!-- Blok Başlık -->
                                 <!-- Blok Alan -->
                                 <div class="Area">
-                                    <div class="col-md-12">
+                                    <section id="comments" class="comments">
+                                        <h3 class="comments-title">
+                                            Yorumlar
+                                        </h3>
 
+                                        <div class="comment-list">
 
+                                            @foreach (yorum yrm in ViewBag.yorumlar)
+                                            {
+                                                <div id="comment-176" class="comment byuser comment-author-riva-moser even thread-even depth-1">
+                                                    <article id="div-comment-176" class="comment-body">
+                                                        <footer class="comment-meta">
+                                                            <div class="comment-author vcard">
+                                                                <img class="avatar avatar-32 photo" src="~/Content/Admin/img/blank-profile-picture-973460_960_720.png" height="32" width="32" />
+                                                                <b class="fn">@yrm.Kullanicilar.ad<span> </span>@yrm.Kullanicilar.soyad</b> <span class="says"> Diyor ki ;</span>
+                                                            </div><!-- .comment-author -->
+                                                            <div class="comment-metadata">
 
-                                        <div class="clearfix_10">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div id="ctl00_cph1_ctl01_ctl03_Panel4" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;ctl00_cph1_ctl01_ctl03_Button1&#39;)">
+                                                                <time datetime="2011-03-18T00:00:00+00:00">
+                                                                    @yrm.eklenmeTarihi
+                                                                </time>
 
-                                            <div class="margin-bottom input-group-lg input-group">
-                                                <div class="col-md-6">
-                                                    <br />
-                                                    <label>
-                                                        Ad-Soyad
-                                                    </label>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator1" style="display:inline-block;color:Red;border-style:None;display:none;">*</span>:<div class="clearfix5"></div>
-                                                    <input name="ctl00$cph1$ctl01$ctl03$txt_ad" type="text" id="ctl00_cph1_ctl01_ctl03_txt_ad" class="form-control" /><div class="clearfix5"></div>
+                                                            </div><!-- .comment-metadata -->
+                                                        </footer><!-- .comment-meta -->
+                                                        <div class="comment-content">
+                                                            <p>@yrm.icerik</p>
+                                                        </div><!-- .comment-content -->
+
+                                                    </article><!-- .comment-body -->
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <br />
-                                                    <label>
-                                                        Telefon
-                                                    </label>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator2" style="display:inline-block;color:Red;border-style:None;display:none;">*</span>:<div class="clearfix5"></div>
-                                                    <input name="ctl00$cph1$ctl01$ctl03$txt_tel" type="text" id="ctl00_cph1_ctl01_ctl03_txt_tel" class="form-control" /><div class="clearfix5"></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <br />
-                                                    <label>
-                                                        GSM
-                                                    </label>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator4" style="display:inline-block;color:Red;border-style:None;display:none;">*</span>:<div class="clearfix5"></div>
-                                                    <input name="ctl00$cph1$ctl01$ctl03$txt_cep" type="text" id="ctl00_cph1_ctl01_ctl03_txt_cep" class="form-control" /><div class="clearfix5"></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <br />
-                                                    <label>
-                                                        E-Mail
-                                                    </label>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RegularExpressionValidator1" style="display:inline-block;color:Red;border-style:None;width:212px;display:none;">*</span>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator3" style="display:inline-block;color:Red;border-style:None;display:none;">*</span>:<div class="clearfix5"></div>
-                                                    <input name="ctl00$cph1$ctl01$ctl03$txt_email" type="text" id="ctl00_cph1_ctl01_ctl03_txt_email" class="form-control" /><div class="clearfix5"></div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <br />
-                                                    <label>
-                                                        Mesaj
-                                                    </label>
-                                                    <span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator5" style="color:Red;display:none;">*</span>:<div class="clearfix5"></div>
-
-                                                    <script type="text/javascript">
-                                            function textCounter(field, cnt, maxlimit) {
-                                                var cntfield = document.getElementById(cnt);
-                                                if (field.value.length > maxlimit) // if too long...trim it!
-                                                    field.value = field.value.substring(0, maxlimit);
-                                                    // otherwise, update 'characters left' counter
-                                                else
-                                                    cntfield.innerHTML = maxlimit - field.value.length;
-                                                var re = /(<([^>]+)>)/gi;
-                                                field.value = field.value.replace(re, "");
                                             }
-                                                    </script>
-                                                    <textarea name="ctl00$cph1$ctl01$ctl03$txt_mesaj" rows="2" cols="20" id="ctl00_cph1_ctl01_ctl03_txt_mesaj" class="form-control" onKeyDown="textCounter(this,&#39;sayac&#39; ,500);" onKeyUp="textCounter(this,&#39;sayac&#39; ,500);" style="height:100px;"></textarea><div class="clearfix5"></div>
-                                                    En fazla 500 karakter.
-                                                    <sayac id='sayac'>500</sayac>
-                                                    karakter kaldı.<div class="clearfix5"></div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <br />
-                                                    <label>
-                                                        Güvenlik<span id="ctl00_cph1_ctl01_ctl03_RequiredFieldValidator6" style="color:Red;display:none;">*</span>
-                                                    </label>
-                                                    <div class="guvenlik">
-                                                        <img id="ctl00_cph1_ctl01_ctl03_Image1" src="/Content/Home/Home2/guvenlik/Captcha.gif" style="border-width:0px;" />
-                                                    </div>
-
-                                                    <div class="clearfix5"></div>
-                                                    <input name="ctl00$cph1$ctl01$ctl03$txt_newcaptcha" type="text" id="ctl00_cph1_ctl01_ctl03_txt_newcaptcha" class="form-control" /><div class="clearfix5"></div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <input type="submit" name="ctl00$cph1$ctl01$ctl03$Button1" value="Gönder" id="ctl00_cph1_ctl01_ctl03_Button1" class="button_all btn btn-primary" />
-                                                </div>
-                                            </div>
+                                            <!-- #comment-## -->
 
                                         </div>
-                                    </div>
+                                        <div id="respond" class="comment-respond">
+                                            <h3 id="reply-title" class="comment-reply-title">Yorum Yap <small><a rel="nofollow" id="cancel-comment-reply-link" href="/Content/Home/index.html#respond" style="display:none;">Cancel reply</a></small></h3>
+                                            <form action="/Home/YorumYap" method="post" class="comment-form">
+                                                <p class="comment-form">
+                                                    <label for="comment">Yorum</label>
+                                                    <input class="hidden" name="id" value="@Model.id" />
+                                                    <textarea id="validationDefault01" name="comment" class="form-control" rows="5" required></textarea>
+                                                </p><p class="comment-form-author">
+                                                    <label for="author">Adınız</label> <span> (Bu alanı boş bırakırsanız adınız gizli kullanıcı olarak görünür.) </span>
+                                                    <input name="author" type="text" class="form-control">
+                                                </p>
+                                                <p class="form-submit">
+                                                    <input type="submit" class="btn btn-default">
+                                                </p>
+                                            </form>
+                                        </div><!-- #respond -->
+
+                                    </section>
+                                    
                                 </div>
                                 <!-- Blok Alan -->
                             </div>

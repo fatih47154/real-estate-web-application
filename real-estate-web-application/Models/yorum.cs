@@ -18,6 +18,13 @@ namespace real_estate_web_application.Models
 
         public int? ilanID { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime? eklenmeTarihi { get; set; }
+
+        public int? kullaniciID { get; set; }
+
         public virtual Ilan Ilan { get; set; }
+
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }

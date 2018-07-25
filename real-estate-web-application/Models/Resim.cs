@@ -13,6 +13,7 @@ namespace real_estate_web_application.Models
         public Resim()
         {
             Kullanicilar = new HashSet<Kullanicilar>();
+            SiteOzellikleri = new HashSet<SiteOzellikleri>();
         }
 
         public int resimID { get; set; }
@@ -28,5 +29,8 @@ namespace real_estate_web_application.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kullanicilar> Kullanicilar { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SiteOzellikleri> SiteOzellikleri { get; set; }
     }
 }

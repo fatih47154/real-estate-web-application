@@ -13,6 +13,7 @@ namespace real_estate_web_application.Models
         public Kullanicilar()
         {
             Ilan = new HashSet<Ilan>();
+            yorum = new HashSet<yorum>();
         }
 
         [Key]
@@ -42,5 +43,8 @@ namespace real_estate_web_application.Models
         public virtual Resim Resim { get; set; }
 
         public virtual SiteOzellikleri SiteOzellikleri { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<yorum> yorum { get; set; }
     }
 }

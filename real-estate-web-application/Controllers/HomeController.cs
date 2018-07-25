@@ -39,8 +39,19 @@ namespace real_estate_web_application.Controllers
 
         public ActionResult ilanDetay(int id)
         {
+            ViewBag.siteDetay = db.SiteOzellikleri.FirstOrDefault(x=>x.siteID == 1);
+            ViewBag.admin = db.Kullanicilar.FirstOrDefault(x => x.admin == true);
             ViewBag.ilan = db.Ilan.FirstOrDefault(x => x.ilanID == id);
             ViewBag.detay = db.konutDetay.FirstOrDefault(x => x.ilanID == id);
+            List<Resim> resim = db.Resim.ToList();
+            List<Resim> resimm = new List<Resim>();
+            foreach (var item in resim)
+            {  
+                resimm.Add(item);
+            }
+            ViewBag.resim = resimm;
+            List<Ilan> yorumlar = db.Ilan.Where(x => x.ilanID == id).ToList();
+            ViewBag.yorumlar = yorumlar;
             return View();
         }
     }
