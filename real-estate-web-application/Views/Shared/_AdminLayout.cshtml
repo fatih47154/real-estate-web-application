@@ -17,7 +17,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="/Content/Admin/img/favicon.png">
 
-    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+    <title>Emlak</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/Content/Admin/css/bootstrap.min.css" rel="stylesheet">
@@ -49,9 +49,9 @@
                 <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
             </div>
             <!--logo start-->
-            <a href="/Content/Admin/index.html" class="logo">Flat<span>lab</span></a>
+            <a href="/Content/Admin/index.html" class="logo">DepWeb<span>Emlak</span></a>
             <!--logo end-->
-            
+
             <div class="top-nav ">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
@@ -66,7 +66,7 @@
                             <b class="caret"></b>
                         </a>
                         <div class="log-arrow-up"></div>
-                        <ul class="dropdown-menu extended logout">                      
+                        <ul class="dropdown-menu extended logout">
                             <li><a href="@Url.Action("cikisYap")"><i class="icon-key"></i> Çıkış Yap</a></li>
                         </ul>
                     </li>
@@ -105,7 +105,7 @@
                             <ul class="sub">
                                 <li><a href="/Admin/kullaniciListele">Kullanıcı Listesi</a></li>
                             </ul>
-                            
+
                         </li>
 
                         <li class="sub-menu">
@@ -114,7 +114,7 @@
                                 <span>Yorumlar</span>
                             </a>
                             <ul class="sub">
-                                <li><a href="/Admin/YorumListesi">Grids</a></li>
+                                <li><a href="/Admin/YorumListesi">Yorum Yönetimi</a></li>
                             </ul>
                         </li>
                         <li class="sub-menu">
@@ -128,13 +128,11 @@
                             </ul>
                         </li>
                         <li class="sub-menu">
-                            <a href="/Content/Admin/javascript:;">
+                            <a href="Home/Index">
                                 <i class="icon-tasks"></i>
                                 <span>Siteye Git</span>
                             </a>
-                            <ul class="sub">
-                                <li><a href="/Content/Admin/form_component.html">Form Components</a></li>
-                            </ul>
+
                         </li>
                         <li class="sub-menu">
                             <a href="/Content/Admin/javascript:;">
@@ -155,7 +153,60 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-                
+                <div class="row state-overview">
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol terques">
+                                <i class="icon-user"></i>
+                            </div>
+                            <div class="value">
+                                <h1 class="count">
+                                    0
+                                </h1>
+                                <p>New Users</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol red">
+                                <i class="icon-tags"></i>
+                            </div>
+                            <div class="value">
+                                <h1 class=" count2">
+                                    0
+                                </h1>
+                                <p>Sales</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol yellow">
+                                <i class="icon-shopping-cart"></i>
+                            </div>
+                            <div class="value">
+                                <h1 class=" count3">
+                                    0
+                                </h1>
+                                <p>New Order</p>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <section class="panel">
+                            <div class="symbol blue">
+                                <i class="icon-bar-chart"></i>
+                            </div>
+                            <div class="value">
+                                <h1 class=" count4">
+                                    0
+                                </h1>
+                                <p>Yorum Sayisi</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
                 @RenderBody()
 
             </section>
@@ -198,28 +249,31 @@
 
     <script>
 
-      //owl carousel
+        //owl carousel
 
-      $(document).ready(function() {
-          $("#owl-demo").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true,
-			  autoPlay:true
+        $(document).ready(function () {
+            $("#owl-demo").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true
 
-          });
-      });
+            });
+        });
 
-      //custom select box
+        //custom select box
 
-      $(function(){
-          $('select.styled').customSelect();
-      });
+        $(function () {
+            $('select.styled').customSelect();
+        });
 
     </script>
-    @RenderSection("script",false)
+    @RenderSection("script", false)
 
-</body>
+
+
+    </body>
+
 </html>
 
