@@ -303,5 +303,32 @@ namespace real_estate_web_application.Controllers
             Session.Abandon();
             return RedirectToAction("Index");
         }
+
+        public ActionResult YorumListesi()
+        {
+            ViewBag.TumYorumlar = db.yorum.OrderByDescending(x => x.yorumID).ToList();
+            return View();
+        }
+        public ActionResult YorumSil(int id)
+        {
+            yorum y = db.yorum.FirstOrDefault(x => x.yorumID == id);
+            db.yorum.Remove(y);
+            db.SaveChanges();
+            return RedirectToAction("YorumListesi");
+        }
+        public ActionResult YorumOnay(int id)
+        {
+            yorum y = db.yorum.FirstOrDefault(x => x.yorumID == id);
+            y.onay = true;
+            db.SaveChanges();
+            return RedirectToAction("YorumListesi");
+        }
+        public ActionResult YorumOnayGeri(int id)
+        {
+            yorum y = db.yorum.FirstOrDefault(x => x.yorumID == id);
+            y.onay = false;
+            db.SaveChanges();
+            return RedirectToAction("YorumListesi");
+        }
     }
 }

@@ -2158,6 +2158,7 @@
     <Content Include="engine2\ws-ctrl-bootstrap.eot" />
     <Content Include="engine2\ws-ctrl-bootstrap.ttf" />
     <Content Include="engine2\ws-ctrl-bootstrap.woff" />
+    <Content Include="Views\Admin\YorumListesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
