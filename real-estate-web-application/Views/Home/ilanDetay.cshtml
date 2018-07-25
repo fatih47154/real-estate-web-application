@@ -6,8 +6,10 @@
 
 @section head{
 
-    <link rel="stylesheet" type="text/css" href="/engine1/style.css" />
-    <script type="text/javascript" src="/engine1/jquery.js"></script>
+    <!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="/engine1/style.css" />
+<script type="text/javascript" src="/engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
 
     }
 
@@ -41,77 +43,161 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-8">
+                <div>
+                    <div class="col-md-8">
 
-                        <div id="wowslider-container1" style="border-style:solid">
-                            <div class="ws_images">
-                                <ul>
-                                    <li><img src="/data1/images/avcilarsatilikdaire600470407_b.jpg" alt="avcilar-satilik-daire-600470407_b" title="avcilar-satilik-daire-600470407_b" id="wows1_0" /></li>
-                                    <li><img src="/data1/images/bakirkoydekiralikdaire1537333516_b.jpg" alt="jquery carousel slider" title="bakirkoyde-kiralik-daire-1537333516_b" id="wows1_1" /></li>
-                                    <li><img src="/data1/images/uskudarsatilikdaire1415442751_b.jpg" alt="uskudar-satilik-daire-1415442751_b" title="uskudar-satilik-daire-1415442751_b" id="wows1_2" /></li>
-                                </ul>
+                        <!-- Start WOWSlider.com BODY section -->
+                        <div style="border:solid;border-color:black">
+                            <div id="wowslider-container1">
+                                <div class="ws_images">
+                                    <ul>
+                                        <li><img src="/data1/images/avcilarsatilikdaire600470407_b.jpg" alt="avcilar-satilik-daire-600470407_b" title="avcilar-satilik-daire-600470407_b" id="wows1_0" /></li>
+                                        <li><img src="/data1/images/bagcilardakiralikdaire2038455565_s.jpg" alt="responsive slider" title="bagcilarda-kiralik-daire-2038455565_s" id="wows1_1" /></li>
+                                        <li><img src="/data1/images/bakirkoydekiralikdaire1537333516_b.jpg" alt="bakirkoyde-kiralik-daire-1537333516_b" title="bakirkoyde-kiralik-daire-1537333516_b" id="wows1_2" /></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="ws_shadow"></div>
                             </div>
-
-                            <div class="ws_shadow"></div>
-                            <div style="background-color:black;width:640px;height:90px"></div>
                         </div>
-                        
+                        <br />
+                        <div class="col-sm-12">
+                            <section class="panel">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center" colspan="6">FİRMA BİLGİLERİ</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>
+                                                <aside class="profile-nav alt green-border">
+                                                    <section class="panel">
+
+                                                        <ul class="nav nav-pills nav-stacked">
+                                                            <li><a href="javascript:;"> <i class="icon-time"></i> Mail Inbox <span class="label label-primary pull-right r-activity">19</span></a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-calendar"></i> Recent Activity <span class="label label-info pull-right r-activity">11</span></a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-bell-alt"></i> Notification <span class="label label-warning pull-right r-activity">03</span></a></li>
+                                                            <li><a href="javascript:;"> <i class="icon-envelope-alt"></i> Message <span class="label label-success pull-right r-activity">10</span></a></li>
+                                                        </ul>
+
+                                                    </section>
+                                                </aside>
+                                            </th>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
                 </div>
+
+
                 
                 <div class="col-md-4">
 
                     <table class="table table-striped table-advance table-hover">
                         <thead>
                             <tr>
-                                <th><i class="icon-edit"></i>Başlık</th>
-                                <th><i class="icon-edit"></i>Fiyat</th>
-
+                                <th colspan="2" style="text-align:center;background-color:White"><i></i>@ViewBag.ilan.fiyat<span> TL</span></th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align:center;background-color:White"><i></i>@ViewBag.ilan.il.IL_ADI<span> / </span>@ViewBag.ilan.ilce.ILCE_ADI<span> / </span>@ViewBag.ilan.semt.SEMT_ADI</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>İlan No</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.ilan.ilanID</td>
                             </tr>
                             <tr>
                                 <td>İlan Tarihi</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.ilan.tarih</td>
                             </tr>
                             <tr>
                                 <td>Emlak Tipi</td>
-                                <td>Başlık</td>
+                                @if(ViewBag.ilan.durum == "satilik")
+                                { 
+                                    <td>Satılık</td>
+                                }
+                                else
+                                {
+                                    <td>Kiralık</td>
+                                }
                             </tr>
                             <tr>
                                 <td>Metrekare</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.ilan.metrekare</td>
                             </tr>
                             <tr>
                                 <td>Oda Sayısı</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.detay.odaSayisi</td>
                             </tr>
                             <tr>
                                 <td>Bina Yaşı</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.detay.binaYasi</td>
                             </tr>
                             <tr>
                                 <td>Kat Sayısı</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.detay.katSayisi</td>
                             </tr>
                             <tr>
                                 <td>Isıtma</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.detay.isitma</td>
                             </tr>
                             <tr>
                                 <td>Banyo Sayısı</td>
-                                <td>Başlık</td>
+                                <td>@ViewBag.detay.banyoSayisi</td>
                             </tr>
                             <tr>
                                 <td>Eşyalı</td>
-                                <td>Başlık</td>
+                                @if (ViewBag.detay.esyali == true)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
                             </tr>
                             <tr>
                                 <td>Site İçerisinde</td>
-                                <td>Başlık</td>
+                                @if (ViewBag.detay.siteIcerisinde == true)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td>Aidat</td>
+                                <td>@ViewBag.detay.aidat</td>
+                            </tr>
+                            <tr>
+                                <td>Krediye Uygun</td>
+                                @if (ViewBag.detay.krediyeUygun == true)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
+                            </tr>
+                            <tr>
+                                <td>Takas</td>
+                                @if (ViewBag.detay.takas == true)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
                             </tr>
                         </tbody>
                     </table>
@@ -119,6 +205,732 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">AÇIKLAMA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>  
+                                    <th>
+                                        @ViewBag.ilan.aciklama
+                                    </th>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">İÇ ÖZELLİKLER</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.esyali == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Eşyalı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.krediyeUygun == true)
+                                                {
+                                                    <input id="checkbox-02" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-02" value="true" type="checkbox" disabled>
+                                                }
+                                                Krediye Uygun
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.takas == true)
+                                                {
+                                                    <input id="checkbox-03" value="true" type="checkbox" disabled="disabled" checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-03" value="false" type="checkbox" disabled="disabled">
+                                                }
+                                                Takas
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.yanginAlarm == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Yangın Alarm
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.hirsizAlarm == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Hırsız Alarm
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.amerikanMutfak == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Amerikan Mutfak
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.alaturkaTuvalet == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Alaturka Tuvalet
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.dusakabin == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Duşakabin
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.fiberInternet == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Fiber İnternet
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.ankastreMutfak == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Ankastre Mutfak
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.laminat == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Laminat
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.somine == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Şömine
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">DIŞ ÖZELLİKLER</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.balkon == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Balkon
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.siteIcerisinde == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Site İçerisinde
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.asansor == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Asansör
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.goruntuluDiafon == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Görüntülü Diafon
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.isicam == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Isıcam
+                                            </label>
+                                        </div> 
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.guvenlik == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Güvenlik
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.isiYalitim == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Isı Yalıtım
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.uydu == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Uydu
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.kapaliGaraj == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Kapalı Garaj
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.kapici == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Kapıcı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.otopark == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Otopark
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.sesYalitim == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Ses Yalıtım
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">MUHİT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.sporAlani == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Spor Alanı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.havuz == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Havuz
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.oyunParki == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Oyun Parkı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.belediye == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Belediye
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.cami == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Cami
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.hastane == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Hastane
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.market == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Market
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.park == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Park
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.okul == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Okul
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        
+                                    </td>
+                                    <td style="width:20%">
+                                        
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">ULAŞIM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.anayol == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Anayol
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.otobusDuragi == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Otobüs Durağı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.cadde == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Cadde
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.minibus == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Minibüs
+                                            </label>
+                                        </div>
+                                    </td>  
+                                    <td style="width:20%"></td>      
+                                    <td style="width:20%"></td>                            
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center" colspan="6">KONUT TİPİ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.araKat == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Arakat
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.bahceKati == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Bahçe Katı
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%">
+                                        <div class="col-lg-3">
+                                            <label class="label_check">
+                                                @if (ViewBag.detay.dubleks == true)
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled checked>
+                                                }
+                                                else
+                                                {
+                                                    <input id="checkbox-01" value="true" type="checkbox" disabled>
+                                                }
+                                                Dubleks
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td style="width:20%"></td>
+                                    <td style="width:20%"></td>
+                                    <td style="width:20%"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>   
         </div>
     </div>
 
@@ -242,4 +1054,10 @@
 @section script{
     <script type="text/javascript" src="/engine1/wowslider.js"></script>
     <script type="text/javascript" src="/engine1/script.js"></script>
+    <!--custom checkbox & radio-->
+    <script type="text/javascript" src="/Content/Admin/js/ga.js"></script>
+    <!--common script for all pages-->
+    <script src="/Content/Admin/js/common-scripts.js"></script>
+    <!--script for this page-->
+    <script src="/Content/Admin/js/form-component.js"></script>
     }

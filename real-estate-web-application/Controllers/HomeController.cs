@@ -37,8 +37,10 @@ namespace real_estate_web_application.Controllers
             return View(ilan);
         }
 
-        public ActionResult ilanDetay()
+        public ActionResult ilanDetay(int id)
         {
+            ViewBag.ilan = db.Ilan.FirstOrDefault(x => x.ilanID == id);
+            ViewBag.detay = db.konutDetay.FirstOrDefault(x => x.ilanID == id);
             return View();
         }
     }

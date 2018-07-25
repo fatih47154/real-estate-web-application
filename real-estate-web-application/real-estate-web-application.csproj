@@ -1877,8 +1877,8 @@
     <Content Include="Content\Home\maxcdn.bootstrapcdn.com\bootstrap\3.3.6\css\bootstrap.min.css" />
     <Content Include="Content\Home\maxcdn.bootstrapcdn.com\bootstrap\3.3.6\js\bootstrap.min.js" />
     <Content Include="data1\images\avcilarsatilikdaire600470407_b.jpg" />
+    <Content Include="data1\images\bagcilardakiralikdaire2038455565_s.jpg" />
     <Content Include="data1\images\bakirkoydekiralikdaire1537333516_b.jpg" />
-    <Content Include="data1\images\uskudarsatilikdaire1415442751_b.jpg" />
     <Content Include="data1\tooltips\avcilarsatilikdaire600470407_b.jpg" />
     <Content Include="data1\tooltips\bakirkoydekiralikdaire1537333516_b.jpg" />
     <Content Include="data1\tooltips\uskudarsatilikdaire1415442751_b.jpg" />
@@ -1902,6 +1902,7 @@
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\css.css" />
     <Content Include="scripts\jquery.js" />
     <Content Include="scripts\script.js" />
     <Content Include="scripts\style.css" />
