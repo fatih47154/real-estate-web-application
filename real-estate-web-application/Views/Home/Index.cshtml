@@ -4,3 +4,39 @@
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
+@section head{
+
+    <link rel="stylesheet" type="text/css" href="/engine2/style.css" />
+    <script type="text/javascript" src="/engine2/jquery.js"></script>
+
+}
+
+
+<div id="wowslider-container1">
+    <div class="ws_images">
+        <ul>
+            <li><img src="/data2/images/slide1.jpg" alt="" title="" id="wows1_0" /></li>
+            <li><img src="/data2/images/untitled1.jpg" alt="" title="" id="wows1_1" /></li>
+            <li><img src="/data2/images/slide2.jpg" alt="" title="" id="wows1_2" /></li>
+            <li><a href="/http://wowslider.net"><img src="/data2/images/slide3.jpg" alt="image slider" title="" id="wows1_3" /></a></li>
+            <li><img src="/data2/images/slide4.jpg" alt="" title="" id="wows1_4" /></li>
+        </ul>
+    </div>
+    <div class="ws_bullets">
+        <div>
+            <a href="/#" title=""><span><img src="/data2/tooltips/slide1.jpg" alt="" />1</span></a>
+            <a href="/#" title=""><span><img src="/data2/tooltips/untitled1.jpg" alt="" />2</span></a>
+            <a href="/#" title=""><span><img src="/data2/tooltips/slide2.jpg" alt="" />3</span></a>
+            <a href="/#" title=""><span><img src="/data2/tooltips/slide3.jpg" alt="" />4</span></a>
+            <a href="/#" title=""><span><img src="/data2/tooltips/slide4.jpg" alt="" />5</span></a>
+        </div>
+    </div><div class="ws_script" style="position:absolute;left:-99%"><a href="/http://wowslider.net">html slideshow</a> by WOWSlider.com v8.8</div>
+    <div class="ws_shadow"></div>
+</div>
+
+@section script{
+    <script type="text/javascript" src="/engine2/wowslider.js"></script>
+    <script type="text/javascript" src="/engine2/script.js"></script>
+}
+
+
