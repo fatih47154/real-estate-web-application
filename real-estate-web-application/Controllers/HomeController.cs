@@ -60,19 +60,13 @@ namespace real_estate_web_application.Controllers
                 resimm.Add(item);
             }
             ViewBag.resim = resimm;
-            List<yorum> yorumlar = new List<yorum>();
-            yorumlar = db.yorum.Where(x => x.ilanID == id).ToList();
-            if(yorumlar.Count == 0)
-            {
-                TempData["a"] = null;
-            }
-            else
-            {
-                TempData["a"] = "1";
-                ViewBag.yorumlar = yorumlar;
-            }
 
-            return View();
+            List<yorum> yorum = new List<yorum>();
+            yorum = db.yorum.ToList();
+            
+
+
+            return View(yorum);
         }
 
         public ActionResult kullaniciKayit(Kullanicilar kullaniciVeri)

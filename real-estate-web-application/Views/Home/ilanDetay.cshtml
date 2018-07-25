@@ -3,10 +3,10 @@
     ViewBag.Title = "ilanDetay";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
-@using real_estate_web_application.Models;
 @{
     Kullanicilar k = (Kullanicilar)Session["HomeKullanici"];
 }
+
 @section head{
 
     <!-- Start WOWSlider.com HEAD section -->
@@ -16,7 +16,8 @@
 <!-- End WOWSlider.com HEAD section -->
 
     }
-
+@using real_estate_web_application.Models;
+@model List<yorum>
 <div role="main" class="main">
 
 
@@ -962,7 +963,7 @@
                                         </h3>
 
                                         <div class="comment-list">
-                                            @foreach (yorum yrm in ViewBag.yorumlar)
+                                            @foreach (var yrm in Model)
                                                 {
                                                 <div id="comment-176" class="comment byuser comment-author-riva-moser even thread-even depth-1">
                                                     <article id="div-comment-176" class="comment-body">
@@ -986,7 +987,7 @@
                                                     </article><!-- .comment-body -->
                                                     </div>
                                                     }
-                                               } 
+                                                
                                             <!-- #comment-## -->
 
                                         </div>
