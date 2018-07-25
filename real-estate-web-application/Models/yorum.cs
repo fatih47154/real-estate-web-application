@@ -24,5 +24,7 @@ namespace real_estate_web_application.Models
         public int? kullaniciID { get; set; }
 
         public virtual Ilan Ilan { get; set; }
+
+        public virtual Kullanicilar Kullanicilar { get; set; }
     }
 }
