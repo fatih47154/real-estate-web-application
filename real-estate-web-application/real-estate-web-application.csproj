@@ -2150,7 +2150,6 @@
     <Content Include="Views\Home\Kiralik.cshtml" />
     <Content Include="Views\Home\Satilik.cshtml" />
     <Content Include="Views\Home\Ilanlar.cshtml" />
-    <Content Include="Views\Home\ilanDetay.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Admin\kullaniciDuzenle.cshtml" />
     <Content Include="data2\images\Thumbs.db" />
@@ -2159,6 +2158,7 @@
     <Content Include="engine2\ws-ctrl-bootstrap.ttf" />
     <Content Include="engine2\ws-ctrl-bootstrap.woff" />
     <Content Include="Views\Admin\YorumListesi.cshtml" />
+    <Content Include="Views\Home\ilanDetay.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

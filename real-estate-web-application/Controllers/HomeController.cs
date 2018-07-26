@@ -111,7 +111,7 @@ namespace real_estate_web_application.Controllers
         }
 
         [HttpPost]
-        public ActionResult yorumYap(yorum yorumVeri)
+        public ActionResult yorumYap(int id,yorum yorumVeri)
         {
             yorum yeniYorum  = new yorum();
             string date = DateTime.Now.ToShortDateString();

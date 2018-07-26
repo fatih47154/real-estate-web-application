@@ -20,7 +20,6 @@
 @model List<yorum>
 <div role="main" class="main">
 
-
     <!-- Üst Başlangıç -->
     <div id="ctl00_cph1_UzunAlan_panel_alan_4">
 
@@ -56,10 +55,7 @@
                             <div id="wowslider-container1">
                                 <div class="ws_images">
                                     <ul>
-                                        @foreach (var item in ViewBag.resim)
-                                        {
-                                            <li><img src="@item.resimUrl" alt="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" title="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" id="wows1_0" /></li>
-                                        }
+                                        
                                     </ul>
                                 </div>
                                 
@@ -993,7 +989,9 @@
                                         </div>
                                         <div id="respond" class="comment-respond">
                                             <h3 id="reply-title" class="comment-reply-title">Yorum Yap <small><a rel="nofollow" id="cancel-comment-reply-link" href="/Content/Home/index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-                                            <form action="Home/yorumYap" method="post" class="comment-form">
+                                        @if(k != null)
+                                        { 
+                                            <form action="yorumYap/@k.kullaniciID" method="post" class="comment-form">
                                                 <p class="comment-form">
                                                     <label for="comment">Yorum</label>
 
@@ -1006,6 +1004,12 @@
                                                     <button type="submit" class="btn btn-primary">Yorum Yap</button>
                                                 </p>
                                             </form>
+
+                                        }
+                                        else
+                                        {
+                                            <label for="comment">Yorum Yapmak İçin Önce Giriş Yapmalısınız !!!</label>
+                                        }
                                         </div><!-- #respond -->
 
                                     </section>
