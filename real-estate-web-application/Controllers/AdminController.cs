@@ -110,14 +110,39 @@ namespace real_estate_web_application.Controllers
         }
 
         [HttpPost]
-        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin)
+        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin,HttpPostedFile kullaniciResim)
         {
+            
+
             Kullanicilar kln = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
             kln.ad = guncellenenAdmin.ad;
             kln.soyad = guncellenenAdmin.soyad;
             kln.kullaniciAdi = guncellenenAdmin.kullaniciAdi;
             kln.telefon = guncellenenAdmin.telefon;
             TempData["b"] = kln.ad+" "+kln.soyad+" isimli Admin Güncellendi";
+            if (kullaniciResim != null)
+            {
+                Image img = Image.FromStream(kullaniciResim.InputStream);
+                string url = "/images/" + Guid.NewGuid() + Path.GetExtension(kullaniciResim.FileName);
+                img.Save(Server.MapPath(url));
+                Resim rsm = db.Resim.Where(x => x.resimID == guncellenenAdmin.resimID).SingleOrDefault();
+                if (rsm == null)
+                {
+                    Resim yeniRsm = new Resim();
+                    yeniRsm.resimUrl = url;
+                    db.Resim.Add(yeniRsm);
+                    db.SaveChanges();
+                    guncellenenAdmin.resimID = yeniRsm.resimID;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    rsm.resimUrl = url;
+                    guncellenenAdmin.resimID = rsm.resimID;
+                    db.SaveChanges();
+
+                }
+            }
             db.SaveChanges();            
             return RedirectToAction("kullaniciListele");
             
