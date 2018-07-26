@@ -1,6 +1,11 @@
 ﻿@using real_estate_web_application.Models;
 @{
+    emlakDB db = new emlakDB();
     Kullanicilar k = (Kullanicilar)Session["HomeKullanici"];
+    SiteOzellikleri st = new SiteOzellikleri();
+    Kullanicilar e = new Kullanicilar();
+    st = db.SiteOzellikleri.FirstOrDefault(x => x.siteID == 1);
+    e = db.Kullanicilar.FirstOrDefault(x => x.admin == true);
 }
 
 <!DOCTYPE html>
@@ -214,7 +219,7 @@
 
 
                             <div class="header-info info-1">
-                                <p><a href="tel:+902124440444"><span style="color:#FEEA0D;">0212 444 0 444</span></a></p>
+                                <p><a href="tel:+902124440444"><span style="color:#FEEA0D;">@st.telefon</span></a></p>
                                 
                             </div>
 
@@ -229,8 +234,8 @@
                                     <table border="0" cellpadding="0" cellspacing="0" class="tema_sol">
                                         <tbody>
                                             <tr>
-                                                <td><img alt="" src="/Content/Home/Home2/site_document/files/resim/logo2png_85157.png" style="width: 60px; height: 60px;" /></td>
-                                             
+                                                <td><a href="/Home/Index"><img src="@st.Resim.resimUrl" style="width: 60px; height: 60px;" /></a></td>
+                                                <td><a href="/Home/Index"><span style="color:#FFFFFF;"><span style="font-size:24px;">@st.ad</span></span></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -269,20 +274,7 @@
                                                         </ul>
                                                     </li>
 
-                                                    <li class="dropdown">
-                                                        <a href="/Content/Home/Home2/kampanyalar/c/290.html" id="mn_290" class="dropdown-toggle"><span data-hover="Kampanyalar">Kampanyalar</span></a>
-                                                        <ul class="dropdown-menu">
-
-                                                            <li>
-                                                                <a href="/Content/Home/Home2/kampanyada-son-nokta.html" id="mn_291"><span data-hover="Kampanyada Son Nokta">Kampanyada Son Nokta</span></a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-
-
-                                                    <li>
-                                                        <a href="/Content/Home/Home2/projelerimiz.html" id="mn_292"><span data-hover="Projelerimiz">Projelerimiz</span></a>
-                                                    </li>
+                                                   
 
                                                     <li>
                                                         <a href="/Content/Home/Home2/iletisim/m/3.html" id="mn_3"><span data-hover="&#304;leti&#351;im">&#304;leti&#351;im</span></a>
@@ -326,7 +318,7 @@
                                     <!-- Blok Başlık -->
                                     <h4 class="heading-primary">Hakkımızda</h4>
                                     <div class="Area">
-                                        <p>Tecrübeli teknik kadromuz ile güvenilir ve verilmi ekip olma anlayışıyla; müşteri memnuniyeti ve kalite ile birlikte zamanındalık ilkerinden ödün vermeden ülke ve dünya standartlarına uygun olarak hizmet sunmaktayız.</p>
+                                        <p>@st.hakkimizda</p>
 
                                     </div>
                                 </div>
@@ -363,13 +355,13 @@
                                     <!-- Blok Başlık -->
                                     <h4 class="heading-primary">İletişim</h4>
                                     <div class="Area">
-                                        <p>Adres: Atatürk Caddesi - İstanbul</p>
+                                        <p>Adres: @st.adres</p>
 
-                                        <p>Telefon: 0212 444 0 444</p>
+                                        <p>Telefon: @st.telefon</p>
 
-                                        <p>Fax: 0212 444 1 444</p>
+                                        <p>Fax: @st.cepTel</p>
 
-                                        <p>E-Mail: demo@demo.com</p>
+                                        <p>E-Mail: @st.email</p>
 
                                     </div>
                                 </div>
@@ -382,7 +374,7 @@
                     <div class="container" style="display: block !important; visibility: visible !important;">
                         <div class="row" style="display: block !important; visibility: visible !important;">
                             <div class="col-md-6" style="display: block !important; visibility: visible !important;">
-                                Copyright (c) 2017 Web Sitesi - Tüm Hakları Saklıdır.
+                                Copyright (c) 2018 @st.ad Sitesi - Tüm Hakları Saklıdır.
                             </div>
                             <div class="col-md-6 pull-right" style="display: block !important; visibility: visible !important;">
                                 <div class="pull-right" style="display: block !important; visibility: visible !important;">
