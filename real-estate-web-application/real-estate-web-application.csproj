@@ -2185,6 +2185,7 @@
     <Content Include="engine2\ws-ctrl-bootstrap.woff" />
     <Content Include="Views\Admin\YorumListesi.cshtml" />
     <Content Include="Views\Home\ilanDetay.cshtml" />
+    <Content Include="Rapor\emlak.docx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
