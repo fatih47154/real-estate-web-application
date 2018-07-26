@@ -113,7 +113,7 @@ namespace real_estate_web_application.Controllers
         }
 
         [HttpPost]
-        public ActionResult yorumYap(int id,yorum yorumVeri)
+        public ActionResult yorumYap(yorum yorumVeri)
         {
             yorum yeniYorum  = new yorum();
             string date = DateTime.Now.ToShortDateString();
@@ -121,7 +121,7 @@ namespace real_estate_web_application.Controllers
             yeniYorum.eklenmeTarihi = Convert.ToDateTime(date);
             db.yorum.Add(yeniYorum);
             db.SaveChanges();
-            return RedirectToAction("ilanDetay");
+            return RedirectToAction("ilanDetay" , yorumVeri.ilanID);
         }
 
 

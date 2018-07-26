@@ -18,6 +18,31 @@
     }
 @using real_estate_web_application.Models;
 @model List<yorum>
+    @section modal{
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                <h4 class="modal-title">Yorum Yap</h4>
+            </div>
+            <div class="modal-body">
+                <form action="yorumYap" method="post" class="comment-form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Yorum</label>
+                        <input type="hidden" name="onay" value="false" />
+                        <input type="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
+                        <input type="hidden" name="kullaniciID" value="@k.kullaniciID" />
+                        <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Yorum Yap</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        }
 <div role="main" class="main">
 
     <!-- Üst Başlangıç -->
@@ -55,7 +80,10 @@
                             <div id="wowslider-container1">
                                 <div class="ws_images">
                                     <ul>
-                                        
+                                        @foreach (var item in ViewBag.resim)
+                                        {
+                                            <li><img src="@item.resimUrl" title="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" id="wows1_0" /></li>
+                                        }
                                     </ul>
                                 </div>
                                 
@@ -989,21 +1017,11 @@
                                         </div>
                                         <div id="respond" class="comment-respond">
                                             <h3 id="reply-title" class="comment-reply-title">Yorum Yap <small><a rel="nofollow" id="cancel-comment-reply-link" href="/Content/Home/index.html#respond" style="display:none;">Cancel reply</a></small></h3>
-                                        @if(k != null)
-                                        { 
-                                            <form action="yorumYap/@k.kullaniciID" method="post" class="comment-form">
-                                                <p class="comment-form">
-                                                    <label for="comment">Yorum</label>
-
-                                                    <input class="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
-                                                    <input class="hidden" name="onay" value="false" />
-                                                    <input class="hidden" name="kullaniciID" value="@k.kullaniciID" />
-                                                    <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>
-                                                </p>
-                                                <p class="form-submit">
-                                                    <button type="submit" class="btn btn-primary">Yorum Yap</button>
-                                                </p>
-                                            </form>
+                                        @if (k != null)
+                                        {
+                                            <a href="#myModal2" data-toggle="modal" class="btn btn-xs btn-success">
+                                                Yorum Yap
+                                            </a>
 
                                         }
                                         else
