@@ -147,7 +147,11 @@ namespace real_estate_web_application.Controllers
             return RedirectToAction("ilanDetay" , yorumVeri.ilanID);
         }
 
-
+        public ActionResult iletisim()
+        {
+            ViewBag.siteOzellikleri = db.SiteOzellikleri.FirstOrDefault(x => x.siteID == 1);
+            return View();
+        }
 
     }
 }

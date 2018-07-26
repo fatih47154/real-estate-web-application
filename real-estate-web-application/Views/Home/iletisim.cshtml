@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "iletisim";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<section style="margin-top:0px;background-color:#7A8494" class="page-header page-header-center  page-header-primary page-header-color page-header-more-padding page-header-no-title-border">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="font-size:30px;color:#FEEA0D">
+                    <b>İletişim</b>
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" id='iletisim'>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="ctl00_cph1_PanelOrta">
+
+
+                <!-- OrtaAlan2 Başlangıç -->
+                <div id="ctl00_cph1_ctl00_panel_orta">
+
+
+                    <div class="row">
+                        <div class="col-md-12" data-appear-animation="swing">
+                            <div class="col-md-6" id="detayImg">
+                                <div class="IletisimBilgi">
+                                    <h2 class="mb-sm mt-sm">İLETİŞİM BİLGİLERİ</h2>
+                                    <p>Adres: @ViewBag.siteOzellikleri.adres</p>
+
+                                    <p>Telefon: @ViewBag.siteOzellikleri.telefon</p>
+
+                                    <p>Cep Telefonu: @ViewBag.siteOzellikleri.cepTel</p>
+
+                                    <p>E-Mail: @ViewBag.siteOzellikleri.email</p>
+                                </div>
+                                </div>
+                                <div class="col-md-6" id="detayImg">
+                                    <a class="img-thumbnail lightbox" href="/Content/Home/Home2/site_document/sayfa_img/hakkimizda-769376858_b.jpg"
+                                       title="Hakkımızda & Misyonuz" data-plugin-options='{"type":"image"}'>
+                                        <img class="img-responsive" alt="Hakkımızda" src="/Content/Home/Home2/site_document/sayfa_img/hakkimizda-769376858_s.jpg"><span class="zoom">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+
+
+                </div>
+                <!-- OrtaAlan2 Son -->
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />

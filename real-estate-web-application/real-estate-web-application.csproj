@@ -2186,6 +2186,7 @@
     <Content Include="Views\Admin\YorumListesi.cshtml" />
     <Content Include="Views\Home\ilanDetay.cshtml" />
     <Content Include="Rapor\emlak.docx" />
+    <Content Include="Views\Home\iletisim.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
