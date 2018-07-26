@@ -32,7 +32,11 @@
                         <label for="exampleInputEmail1">Yorum</label>
                         <input type="hidden" name="onay" value="false" />
                         <input type="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
+                        
+                        @if(k != null)
+                        { 
                         <input type="hidden" name="kullaniciID" value="@k.kullaniciID" />
+                        }
                         <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>
                     </div>
 

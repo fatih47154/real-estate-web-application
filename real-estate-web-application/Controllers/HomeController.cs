@@ -66,7 +66,7 @@ namespace real_estate_web_application.Controllers
             ViewBag.resim = resimm;
 
             List<yorum> yorum = new List<yorum>();
-            yorum = db.yorum.ToList();
+            yorum = db.yorum.Where(x => x.onay == true).ToList();
             
 
 
