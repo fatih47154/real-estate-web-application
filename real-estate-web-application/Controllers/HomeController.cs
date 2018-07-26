@@ -116,7 +116,7 @@ namespace real_estate_web_application.Controllers
         public ActionResult girisYap(string kullaniciAdi, string sifre)
         {
             emlakDB db = new emlakDB();
-            Kullanicilar k = db.Kullanicilar.Where(x => x.kullaniciAdi == kullaniciAdi && x.sifre == sifre && x.admin == true).SingleOrDefault();
+            Kullanicilar k = db.Kullanicilar.Where(x => x.kullaniciAdi == kullaniciAdi && x.sifre == sifre).SingleOrDefault();
             if (k == null)
             {
                 TempData["a"] = "Kullanıcı Bulunamadı !!";

@@ -131,8 +131,8 @@
                    <div class="form-group">
                         <label class="col-sm-2 col-sm-2 control-label">Mahalle / Köy</label>
                         <div class="col-md-10">
-                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="MAH_ID">
-                                <option value="default">Mahalle / Köy Seç</option>
+                            <select onchange="show_selected()" id="prof" class="form-control m-bot15" tabindex="-1" aria-hidden="true" name="MAH_ID" required>
+                                <option value="default" >Mahalle / Köy Seç</option>
                                 @foreach (mahalle_koy item in ViewBag.mahalleKoyler)
                                 {
                                     <option value="@item.MAH_ID">@item.MAHALLE_ADI</option>

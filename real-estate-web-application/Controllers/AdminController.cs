@@ -305,18 +305,30 @@ namespace real_estate_web_application.Controllers
         {
             Ilan ilan = db.Ilan.Where(x => x.ilanID == ilanID).SingleOrDefault();
             konutDetay detay = db.konutDetay.Where(x => x.ilanID == ilanID).SingleOrDefault();
-            ilan = ilanVeri;
+            
 
             ilan.aciklama = ilanVeri.aciklama;
             ilan.baslik = ilanVeri.baslik;
             ilan.durum = ilanVeri.durum;
             ilan.fiyat = ilanVeri.fiyat;
-            ilan.ILCE_ID = ilanVeri.ILCE_ID;
-            ilan.IL_ID = ilanVeri.IL_ID;
+            if(ilanVeri.ILCE_ID != 0)
+            { 
+                ilan.ILCE_ID = ilanVeri.ILCE_ID;
+            }
+            if (ilanVeri.IL_ID != null)
+            {
+                ilan.IL_ID = ilanVeri.IL_ID;
+            }
             ilan.kategoriID = ilanVeri.kategoriID;
-            ilan.MAH_ID = ilanVeri.MAH_ID;
+            if (ilanVeri.MAH_ID != null)
+            {
+                ilan.MAH_ID = ilanVeri.MAH_ID;
+            }
             ilan.metrekare = ilanVeri.metrekare;
-            ilan.SEMT_ID = ilanVeri.SEMT_ID;
+            if (ilanVeri.SEMT_ID != null)
+            {
+                ilan.SEMT_ID = ilanVeri.SEMT_ID;
+            }
             ilan.vitrin = ilanVeri.vitrin;
             string date = DateTime.Now.ToShortDateString();
             ilan.tarih = Convert.ToDateTime(date);
@@ -355,7 +367,10 @@ namespace real_estate_web_application.Controllers
             detay.laminat = detayVeri.laminat;
             detay.market = detayVeri.market;
             detay.minibus = detayVeri.minibus;
-            detay.odaSayisi = detayVeri.odaSayisi;
+            if (detayVeri.odaSayisi != "default")
+            {
+                detay.odaSayisi = detayVeri.odaSayisi;
+            }
             detay.okul = detayVeri.okul;
             detay.otobusDuragi = detayVeri.otobusDuragi;
             detay.otopark = detayVeri.otopark;
