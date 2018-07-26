@@ -43,10 +43,6 @@ namespace real_estate_web_application.Models
             modelBuilder.Entity<SiteOzellikleri>()
                 .Property(e => e.ad)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<yorum>()
-                .Property(e => e.icerik)
-                .IsFixedLength();
         }
     }
 }

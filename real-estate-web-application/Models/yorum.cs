@@ -9,7 +9,7 @@ namespace real_estate_web_application.Models
     [Table("yorum")]
     public partial class yorum
     {
-        [StringLength(10)]
+        [StringLength(200)]
         public string icerik { get; set; }
 
         public int yorumID { get; set; }
