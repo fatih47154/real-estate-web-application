@@ -44,11 +44,6 @@ namespace real_estate_web_application.Models
                 .Property(e => e.ad)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SiteOzellikleri>()
-                .HasMany(e => e.Kullanicilar)
-                .WithOptional(e => e.SiteOzellikleri)
-                .HasForeignKey(e => e.resimID);
-
             modelBuilder.Entity<yorum>()
                 .Property(e => e.icerik)
                 .IsFixedLength();

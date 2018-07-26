@@ -7,6 +7,7 @@
     emlakDB db = new emlakDB();
     Kullanicilar k = (Kullanicilar)Session["Kullanici"];
     var st = db.SiteOzellikleri.FirstOrDefault(x => x.siteID == 1);
+    var kk = db.Kullanicilar.FirstOrDefault(x => x.admin == true);
 }
 
 <!DOCTYPE html>
@@ -60,7 +61,7 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="/Content/Admin/#">
-                            <img alt="" src="/Content/Admin/img/avatar1_small.jpg">
+                            <img alt="" width="20" height="20" src="@kk.Resim.resimUrl">
                             <span class="username"><b>@k.ad</b> <b>@k.soyad</b></span>
                             <b class="caret"></b>
                         </a>

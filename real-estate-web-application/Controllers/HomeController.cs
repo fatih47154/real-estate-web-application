@@ -1,6 +1,8 @@
 ﻿using real_estate_web_application.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -73,15 +75,29 @@ namespace real_estate_web_application.Controllers
             return View(yorum);
         }
 
-        public ActionResult kullaniciKayit(Kullanicilar kullaniciVeri)
+        public ActionResult kullaniciKayit(Kullanicilar kullaniciVeri, HttpPostedFileBase resim)
         {
             var k = db.Kullanicilar.FirstOrDefault(x => x.kullaniciAdi == kullaniciVeri.kullaniciAdi);
             if(k == null)
             {
                 Kullanicilar yeniKullanici = new Kullanicilar();
                 yeniKullanici = kullaniciVeri;
-                db.Kullanicilar.Add(yeniKullanici);
-                db.SaveChanges();
+                
+                if (resim != null)
+                {
+                    Image img = Image.FromStream(resim.InputStream);
+                    string url = "/images/" + Guid.NewGuid() + Path.GetExtension(resim.FileName);
+                    img.Save(Server.MapPath(url));
+                    
+                        Resim yeniRsm = new Resim();
+                        yeniRsm.resimUrl = url;
+                        db.Resim.Add(yeniRsm);
+                        db.SaveChanges();
+                        yeniKullanici.resimID = yeniRsm.resimID;
+                        db.Kullanicilar.Add(yeniKullanici);
+                        db.SaveChanges();
+                    
+                }
                 TempData["a"] = kullaniciVeri.ad + " İsimli Kullanıcı Kaydedildi .";
             }
             else
@@ -125,6 +141,7 @@ namespace real_estate_web_application.Controllers
             db.SaveChanges();
             return RedirectToAction("ilanDetay" , yorumVeri.ilanID);
         }
+
 
 
     }

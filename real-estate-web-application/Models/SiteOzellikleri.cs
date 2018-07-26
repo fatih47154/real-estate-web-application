@@ -9,12 +9,6 @@ namespace real_estate_web_application.Models
     [Table("SiteOzellikleri")]
     public partial class SiteOzellikleri
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SiteOzellikleri()
-        {
-            Kullanicilar = new HashSet<Kullanicilar>();
-        }
-
         [Key]
         public int siteID { get; set; }
 
@@ -40,9 +34,6 @@ namespace real_estate_web_application.Models
 
         [StringLength(200)]
         public string adres { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kullanicilar> Kullanicilar { get; set; }
 
         public virtual Resim Resim { get; set; }
     }
