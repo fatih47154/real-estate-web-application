@@ -46,7 +46,7 @@
     
 
     <link rel="stylesheet" href="/Content/Home/Home2/style6488.css?Tema=">
-    @RenderSection("head", false);
+    @RenderSection("head", false)
 
     <script type="text/javascript">
 
@@ -66,7 +66,7 @@
     </title>
 </head>
 <body>
-    @RenderSection("modal", false);
+    @RenderSection("modal", false)
     <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -77,24 +77,24 @@
                 <div class="modal-body">
                     <form action="kullaniciKayit" method="post" class="comment-form">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Adı</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Adınızı Giriniz" name="ad">
+                            <label for="exampleInputEmail1" >Adı</label>
+                            <input type="text" class="form-control" id="exampleInputEmail3"  placeholder="Adınızı Giriniz" name="ad" required >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Soyad</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Soyadınızı Giriniz" name="soyad">
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Soyadınızı Giriniz" name="soyad"required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kullanıcı Adı</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Kullanıcı Adını Giriniz" name="kullaniciAdi">
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Kullanıcı Adını Giriniz" name="kullaniciAdi"required min="2">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Şifre</label>
-                            <input type="password" class="form-control" id="exampleInputEmail3" name="sifre">
+                            <input type="password" class="form-control" id="exampleInputEmail3" name="sifre"required min="2">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Telefon</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Telefonunuzu Giriniz" name="telefon">
+                            <input type="number" class="form-control" id="exampleInputEmail3" placeholder="Telefonunuzu Giriniz" name="telefon"required>
                             <input type="hidden" value="false" name="admin">
                         </div>
                         <div class="form-group">
@@ -119,11 +119,11 @@
                     <form action="girisYap" method="post" class="comment-form">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Kullanıcı Adı</label>
-                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Kullanıcı Adı" name="kullaniciAdi">
+                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Kullanıcı Adı" name="kullaniciAdi" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Şifre</label>
-                            <input type="password" class="form-control" id="exampleInputEmail3" placeholder="Şifre" name="Sifre">
+                            <input type="password" class="form-control" id="exampleInputEmail3" placeholder="Şifre" name="Sifre" required>
                         </div>
                         <button type="submit" class="btn btn-default">Giriş Yap</button>
                     </form>
@@ -219,7 +219,7 @@
 
 
                             <div class="header-info info-1">
-                                <p><a href="tel:+902124440444"><span style="color:#FEEA0D;">@st.telefon</span></a></p>
+                                <p><span style="color:#FEEA0D;">@st.telefon</span></p>
                                 
                             </div>
 
