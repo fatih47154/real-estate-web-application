@@ -63,8 +63,15 @@
                                         <li data-appear-animation="flash" class="blid_1328 col-md-3 col-sm-6 col-xs-12 product">
                                             <a href="ilanDetay/@item.ilanID" title="&#220;sk&#252;dar Sat&#305;l&#305;k Daire">
                                                 <span class="onsale menuarkaplan">@item.fiyat </span>
-                                                <span class="product-thumb-info thumb-info-no-zoom">
-                                                    <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/uskudar-satilik-daire-1415442751_s.jpg">
+                                                <span class="product-thumb-info thumb-info-no-zoom"> 
+                                                    @foreach (Resim ritem in ViewBag.resim) 
+                                                    {
+                                                       if (ritem.ilanID == item.ilanID && ritem.vitrinResim==true)
+                                                       {
+                                                        <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="@ritem.resimUrl">
+                                                       }
+                                                    }                                                    
+                                                       
                                                     <span class="product-thumb-info-content">
                                                         @item.baslik
                                                     </span>
