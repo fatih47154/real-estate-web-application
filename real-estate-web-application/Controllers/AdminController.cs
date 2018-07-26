@@ -110,16 +110,13 @@ namespace real_estate_web_application.Controllers
         }
 
         [HttpPost]
-        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin,HttpPostedFile kullaniciResim)
+        public ActionResult kullaniciDuzenle(int id,Kullanicilar guncellenenAdmin, HttpPostedFileBase kullaniciResim)
         {
             
 
             Kullanicilar kln = db.Kullanicilar.FirstOrDefault(x => x.kullaniciID == id);
-            kln.ad = guncellenenAdmin.ad;
-            kln.soyad = guncellenenAdmin.soyad;
-            kln.kullaniciAdi = guncellenenAdmin.kullaniciAdi;
-            kln.telefon = guncellenenAdmin.telefon;
-            TempData["b"] = kln.ad+" "+kln.soyad+" isimli Admin Güncellendi";
+            
+            
             if (kullaniciResim != null)
             {
                 Image img = Image.FromStream(kullaniciResim.InputStream);
@@ -128,21 +125,26 @@ namespace real_estate_web_application.Controllers
                 Resim rsm = db.Resim.Where(x => x.resimID == guncellenenAdmin.resimID).SingleOrDefault();
                 if (rsm == null)
                 {
+                    kln.ad = guncellenenAdmin.ad;
+                    kln.soyad = guncellenenAdmin.soyad;
+                    kln.kullaniciAdi = guncellenenAdmin.kullaniciAdi;
+                    kln.telefon = guncellenenAdmin.telefon;
+
                     Resim yeniRsm = new Resim();
                     yeniRsm.resimUrl = url;
+                    kln.resimID = yeniRsm.resimID;
                     db.Resim.Add(yeniRsm);
-                    db.SaveChanges();
-                    guncellenenAdmin.resimID = yeniRsm.resimID;
                     db.SaveChanges();
                 }
                 else
                 {
                     rsm.resimUrl = url;
-                    guncellenenAdmin.resimID = rsm.resimID;
+                    kln.resimID = rsm.resimID;
                     db.SaveChanges();
 
                 }
             }
+            TempData["b"] = kln.ad + " " + kln.soyad + " isimli Admin Güncellendi";
             db.SaveChanges();            
             return RedirectToAction("kullaniciListele");
             
