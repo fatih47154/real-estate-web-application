@@ -36,13 +36,18 @@ namespace real_estate_web_application.Controllers
         }
         public ActionResult Kiralik()
         {
-            List<Ilan> ilan = db.Ilan.ToList();
-            return View(ilan);
+            List<Ilan> kiralikIlanlar = db.Ilan.Where(x => x.durum == "kiralik").ToList();
+            List<Resim> resimler = db.Resim.Where(x => x.vitrinResim == true).ToList();
+            ViewBag.kiralikIlanlar = kiralikIlanlar;
+            ViewBag.resim = resimler;
+            return View();
         }
         public ActionResult Satilik()
         {
             List<Ilan> satilikIlanlar = db.Ilan.Where(x => x.durum == "satilik").ToList();
+            List<Resim> resimler = db.Resim.Where(x => x.vitrinResim == true).ToList();
             ViewBag.satilikIlanlar = satilikIlanlar;
+            ViewBag.resim = resimler;
             return View();
         }
         public ActionResult Ilanlar()
@@ -59,7 +64,7 @@ namespace real_estate_web_application.Controllers
             ViewBag.admin = db.Kullanicilar.FirstOrDefault(x => x.admin == true);
             ViewBag.ilan = db.Ilan.FirstOrDefault(x => x.ilanID == id);
             ViewBag.detay = db.konutDetay.FirstOrDefault(x => x.ilanID == id);
-            List<Resim> resim = db.Resim.ToList();
+            List<Resim> resim = db.Resim.Where(x=>x.ilanID == id).ToList();
             List<Resim> resimm = new List<Resim>();
             foreach (var item in resim)
             {  

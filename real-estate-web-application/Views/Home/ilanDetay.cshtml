@@ -47,7 +47,7 @@
     </div>
 </div>
         }
-<div role="main" class="main">
+<div role="main" class="main" style="margin-top:-40px">
 
     <!-- Üst Başlangıç -->
     <div id="ctl00_cph1_UzunAlan_panel_alan_4">
@@ -64,7 +64,12 @@
                     </h1>
                     <ul class="breadcrumb">
                         <li>
-                            <a href='../../satilik/k/225.html'>Satılık</a>
+                            @if (ViewBag.ilan.durum == "satilik   ")
+                            {
+                                <span>Satılık</span>
+                            }
+                            else
+                            { <span>Kiralık</span>}
                         </li>
                     </ul>
                 </div>
@@ -86,7 +91,7 @@
                                     <ul>
                                         @foreach (var item in ViewBag.resim)
                                         {
-                                            <li><img src="@item.resimUrl" title="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" id="wows1_0" /></li>
+                                            <li><img width="740" height="360" src="@item.resimUrl" title="@ViewBag.ilan.il.IL_ADI / @ViewBag.ilan.ilce.ILCE_ADI / @ViewBag.ilan.semt.SEMT_ADI" id="wows1_0" /></li>
                                         }
                                     </ul>
                                 </div>

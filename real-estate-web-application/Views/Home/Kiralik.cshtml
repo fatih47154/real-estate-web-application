@@ -5,13 +5,13 @@
 }
 
 @using real_estate_web_application.Models;
-@model List<Ilan>
-<section style="background-color:#7A8494" class="page-header page-header-center  page-header-primary page-header-color page-header-more-padding page-header-no-title-border">
+
+<section style="margin-top:-0px;background-color:#7A8494" class="page-header page-header-center  page-header-primary page-header-color page-header-more-padding page-header-no-title-border">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1 style="font-size:40px;color:#FEEA0D">
-                    Kiral&#305;k
+                    <b>Kiral&#305;k</b>
                 </h1>
             </div>
         </div>
@@ -39,7 +39,7 @@
 
                                     <ul class="sec_subproducts con_sp_1 products product-thumb-info-list" data-plugin-masonry data-plugin-options='{"layoutMode": "fitRows"}'>
 
-                                        @foreach (Ilan ilan in Model)
+                                        @foreach (Ilan ilan in ViewBag.kiralikIlanlar)
                                         {
                                             if (ilan.durum == "kiralik   ")
                                             {
@@ -52,7 +52,13 @@
                                                                         &#304;lan Detay&#305;n&#305; G&#246;ster
                                                                     </em>
                                                                 </span>
-                                                                <img alt="Antalyada Kiral&#305;k Ev" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/antalyada-kiralik-ev-1724773383_s.jpg">
+                                                                @foreach (Resim ritem in ViewBag.resim)
+                                                                {
+                                                                    if (ritem.ilanID == ilan.ilanID && ritem.vitrinResim == true)
+                                                                    {
+                                                                        <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="@ritem.resimUrl">
+                                                                    }
+                                                                }     
                                                             </span>
                                                         </a>
                                                         <span class="product-thumb-info-content">

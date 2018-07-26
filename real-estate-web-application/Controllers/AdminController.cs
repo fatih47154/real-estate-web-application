@@ -190,17 +190,20 @@ namespace real_estate_web_application.Controllers
                 resimler.Add(resim2);
                 resimler.Add(resim3);
                 resimler.Add(resim4);
-
+                bool a = true;
                 foreach (var item in resimler)
                 {
+                    
                     Image img = Image.FromStream(item.InputStream);
                     string url = "/images/" + Guid.NewGuid() + Path.GetExtension(item.FileName);
                     img.Save(Server.MapPath(url));
 
                     Resim yeniRsm = new Resim();
                     yeniRsm.resimUrl = url;
+                    yeniRsm.vitrinResim = a;
                     yeniRsm.ilanID = ilanVeri.ilanID;
                     db.Resim.Add(yeniRsm);
+                    a = false;
                 }
 
                 db.Ilan.Add(yeniIlan);

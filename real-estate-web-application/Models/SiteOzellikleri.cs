@@ -26,10 +26,10 @@ namespace real_estate_web_application.Models
 
         public int? resimID { get; set; }
 
-        [StringLength(500)]
+        [StringLength(4000)]
         public string hakkimizda { get; set; }
 
-        [StringLength(200)]
+        [StringLength(4000)]
         public string misyon { get; set; }
 
         [StringLength(200)]

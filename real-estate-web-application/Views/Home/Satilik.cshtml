@@ -7,7 +7,7 @@
 
 @using real_estate_web_application.Models;
 @model List<Ilan>
-<div role="main" class="main">
+<div role="main" class="main"  style="margin-top:-40px">
 
 
     <!-- Üst Başlangıç -->
@@ -59,7 +59,14 @@
                                                                     &#304;lan Detay&#305;n&#305; G&#246;ster
                                                                 </em>
                                                             </span>
-                                                            <img alt="Avc&#305;lar Sat&#305;l&#305;k Daire" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/avcilar-satilik-daire-600470407_s.jpg">
+                                                            @foreach (Resim ritem in ViewBag.resim)
+                                                            {
+                                                                if (ritem.ilanID == item.ilanID && ritem.vitrinResim == true)
+                                                                {
+                                                                    <img alt="&#220;sk&#252;dar Sat&#305;l&#305;k Daire" class="img-responsive" src="@ritem.resimUrl">
+                                                                }
+                                                            }
+                                                            
                                                         </span>
                                                     </a>
                                                     <span class="product-thumb-info-content">
