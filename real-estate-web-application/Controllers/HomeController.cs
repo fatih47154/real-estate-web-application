@@ -16,9 +16,11 @@ namespace real_estate_web_application.Controllers
             var kln = db.Kullanicilar.ToList();            
             var ilanlar = db.Ilan.ToList();
             var yorum = db.yorum.ToList();
+            var rsm = db.Resim.ToList();
             ViewBag.kullaniciSayisi = kln.LongCount();
             ViewBag.ilanSayisi = ilanlar.LongCount();
-            ViewBag.yorumSayisi = yorum.LongCount();           
+            ViewBag.yorumSayisi = yorum.LongCount();
+            ViewBag.resim = rsm;          
             ViewBag.iln = ilanlar;
             
                       

@@ -1718,7 +1718,6 @@
     <Content Include="Content\Admin\js\bootstrap.js" />
     <Content Include="Content\Admin\js\bootstrap.min.js" />
     <Content Include="Content\Admin\js\common-scripts.js" />
-    <Content Include="Content\Admin\js\count.js" />
     <Content Include="Content\Admin\js\dynamic-table.js" />
     <Content Include="Content\Admin\js\easy-pie-chart.js" />
     <Content Include="Content\Admin\js\editable-table.js" />
@@ -1900,6 +1899,33 @@
     <Content Include="engine2\wowslider.mod.js" />
     <Content Include="engine2\ws-ctrl-bootstrap.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\0dd4e4cc-ccbc-4cd4-ba18-bd14a8960a34.png" />
+    <Content Include="images\1b14d612-62a8-448f-8123-348521e5f276.jpg" />
+    <Content Include="images\1ded140c-928c-40ac-ae64-3f1fbf4b2f85.png" />
+    <Content Include="images\29229272-115a-42a4-8aca-6f400f1c5f2a.jpg" />
+    <Content Include="images\2ca0a96a-62e4-4e6d-b2fe-bf7e68834b89.jpg" />
+    <Content Include="images\46f49951-ab73-429f-8683-540bb537937a.jpg" />
+    <Content Include="images\49328b49-1e17-4c80-b204-35b908e54345.jpg" />
+    <Content Include="images\573161a4-8020-4b07-9428-1a7fca3483e0.png" />
+    <Content Include="images\59374041-0ff5-485d-87e3-2a8c6057089f.jpg" />
+    <Content Include="images\6be263ee-bd06-4602-902f-3634ce440c76.jpg" />
+    <Content Include="images\700dd4bc-a93a-4f6f-b610-6d5f8cf06468.jpg" />
+    <Content Include="images\7ee6e7cd-6f1a-4655-b6e3-31ea759f2dcf.png" />
+    <Content Include="images\7f95f388-93bf-4358-afc4-6f3bc7abf652.jpg" />
+    <Content Include="images\844f3ea0-14b6-4ee0-8008-e1bf03768af1.png" />
+    <Content Include="images\8ba2e247-e5dd-4bb6-a636-acec63427255.jpg" />
+    <Content Include="images\91f98318-536f-4b03-a9ca-c208f375540b.jpg" />
+    <Content Include="images\a2b9f686-e43e-429d-94f5-e3f88fe0408c.png" />
+    <Content Include="images\b4044283-d424-43a6-a521-8c71a856b34f.jpg" />
+    <Content Include="images\bfa4f0c9-5139-4250-884b-743f92c61c65.png" />
+    <Content Include="images\ceb53bde-ad59-4949-b97e-ed844e4d8171.jpg" />
+    <Content Include="images\d22b2280-c681-4947-b4ee-d217f93b5ccd.png" />
+    <Content Include="images\ed925785-4b00-45c0-ae78-ba3be8ddb2a8.jpg" />
+    <Content Include="images\edc35570-f268-43ea-b34e-88b93410016c.jpg" />
+    <Content Include="images\fc18fc53-2760-416d-9267-12034821fd21.jpg" />
+    <Content Include="images\fe9f019e-4ced-449f-9d35-91b9468dbbef.jpg" />
+    <Content Include="images\fec6ccb4-80a5-473b-9a22-9014884fa1d0.jpg" />
+    <Content Include="images\ff987437-c3c7-4e7e-9e9c-944894b44b76.jpg" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\css.css" />
@@ -2169,7 +2195,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="images\" />
     <Folder Include="Login\" />
   </ItemGroup>
   <PropertyGroup>

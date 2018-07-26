@@ -5,37 +5,50 @@
 }
 
 
-<!-- Beyler bunu silmeyin kalsın şimdilik -->
-
-
-<!-- Button trigger modal-->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Launch modal</button>
-
-<!--Modal: modalConfirmDelete-->
-<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-        <!--Content-->
-        <div class="modal-content text-center">
-            <!--Header-->
-            <div class="modal-header d-flex justify-content-center">
-                <p class="heading">Are you sure?</p>
+<div class="row state-overview">
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol terques">
+                <i class="icon-user"></i>
             </div>
-
-            <!--Body-->
-            <div class="modal-body">
-
-                <i class="fa fa-times fa-4x animated rotateIn"></i>
-
+            <div class="value">
+                <h1 class="count"></h1>
+                <p>Toplam Kullanıcı</p>
             </div>
-
-            <!--Footer-->
-            <div class="modal-footer flex-center">
-                <a href="/Admin/Index"  class="btn  btn-success">Yes</a>
-                <a href="/Admin/Index" type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
-            </div>
-        </div>
-        <!--/.Content-->
+        </section>
     </div>
-</div>
-<!--Modal: modalConfirmDelete-->
+    <
+    </div>
 
+
+@section bizim{
+    <script>
+
+
+
+        function countUp(count) {
+            var div_by = @ViewBag.ilanSayisi,
+                speed = Math.round(count / div_by),
+                $display = $('.count'),
+                run_count = 0,
+                int_speed = 24;
+
+            var int = setInterval(function () {
+                if (run_count < div_by) {
+                    $display.text(speed * run_count);
+                    run_count++;
+                } else if (parseInt($display.text()) < count) {
+                    var curr_count = parseInt($display.text()) + 1;
+                    $display.text(curr_count);
+                } else {
+                    clearInterval(int);
+                }
+            }, int_speed);
+        }
+
+        countUp(@ViewBag.ilanSayisi);
+
+        
+    </script>
+
+}
