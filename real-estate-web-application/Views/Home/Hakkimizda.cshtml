@@ -10,13 +10,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 style="font-size:40px;color:#FEEA0D">
-                    Hakk&#305;m&#305;zda
+                <h1 style="font-size:30px;color:#FEEA0D">
+                    Hakkımızda & Misyonumuz
                 </h1>
             </div>
         </div>
     </div>
 </section>
+
 
 <div class="container sayfaIcerik" id="statik_289">
 
@@ -35,7 +36,7 @@
 
                         <div class="col-md-4" id="detayImg">
                             <a class="img-thumbnail lightbox" href="/Content/Home/Home2/site_document/sayfa_img/hakkimizda-769376858_b.jpg"
-                               title="Hakkımızda" data-plugin-options='{"type":"image"}'>
+                               title="Hakkımızda & Misyonuz" data-plugin-options='{"type":"image"}'>
                                 <img class="img-responsive" alt="Hakkımızda" src="/Content/Home/Home2/site_document/sayfa_img/hakkimizda-769376858_s.jpg"><span class="zoom">
                                     <i class="fa fa-search"></i>
                                 </span>
@@ -45,7 +46,14 @@
                         <br />
                        @foreach (SiteOzellikleri site in Model)
                        {
+                        <p style="font-size:20px;color:#012592">Hakkımızda</p>
+
                            @site.hakkimizda
+                           <br />
+                            <br />
+                           <p style="font-size:20px;color:#012592">Misyonumuz</p>
+                           
+                           @site.misyon
                        }
                     </div>
                     <div id="ctl00_cph1_ctl00_ctl00_panel_alan_4">
@@ -70,3 +78,4 @@
     <!-- OrtaAlan1 Son -->
 
     </div>
+
