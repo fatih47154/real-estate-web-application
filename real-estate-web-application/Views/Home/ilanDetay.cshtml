@@ -20,9 +20,9 @@
 @model List<yorum>
     @section modal{
         <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal2" class="modal fade">
-    <div class="modal-dialog">        
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">            
+            <div class="modal-header">
                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
                 <h4 class="modal-title">Yorum Yap</h4>
             </div>
@@ -32,8 +32,12 @@
                         <label for="exampleInputEmail1">Yorum</label>
                         <input type="hidden" name="onay" value="false" />
                         <input type="hidden" name="ilanID" value="@ViewBag.ilan.ilanID" />
+                        
+                        @if(k != null)
+                        { 
                         <input type="hidden" name="kullaniciID" value="@k.kullaniciID" />
-                        <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>                      
+                        }
+                        <textarea id="validationDefault01" name="icerik" class="form-control" rows="5" required></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-default">Yorum Yap</button>
@@ -1053,5 +1057,5 @@
     <!--common script for all pages-->
     <script src="/Content/Admin/js/common-scripts.js"></script>
     <!--script for this page-->
-    <script src="/Content/Admin/js/form-component.js"></script>   
+    <script src="/Content/Admin/js/form-component.js"></script>
     }
