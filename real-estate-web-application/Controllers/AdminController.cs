@@ -238,8 +238,34 @@ namespace real_estate_web_application.Controllers
         [HttpPost]
         public void ilanSil(int id)
         {
-            Ilan kx = db.Ilan.FirstOrDefault(x => x.ilanID == id);
+            Ilan kx = db.Ilan.FirstOrDefault(x => x.ilanID == id);            
+            List<Resim> rsm = db.Resim.Where(x => x.ilanID == id).ToList();
+            List<yorum> yrm = db.yorum.Where(x => x.ilanID == id).ToList();
+            konutDetay kd = db.konutDetay.FirstOrDefault(x => x.ilanID == id);
+            if (rsm!=null)
+            {
+                foreach (Resim item in rsm)
+                {
+                    db.Resim.Remove(item);
+                }             
 
+            }
+            if (kd != null)
+            {
+                foreach (yorum item1 in yrm)
+                {
+                    db.yorum.Remove(item1);
+                    
+                }
+            }
+
+            if (kd != null)
+            {
+                db.konutDetay.Remove(kd);
+            }
+
+
+            db.SaveChanges();
             try
             {
 
