@@ -15,7 +15,9 @@ namespace real_estate_web_application.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-           
+
+            var kullanıcılar = db.Kullanicilar.ToList();
+            ViewBag.kullaniciSayisi = kullanıcılar.LongCount();
             var ilanlar = db.Ilan.ToList();
             ViewBag.ilanSayisi = ilanlar.LongCount();
             return View();

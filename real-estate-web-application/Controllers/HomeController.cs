@@ -45,6 +45,8 @@ namespace real_estate_web_application.Controllers
         }
         public ActionResult Ilanlar()
         {
+            var rsm = db.Resim.ToList();
+            ViewBag.resim = rsm;
             List<Ilan> ilan = db.Ilan.ToList();
             return View(ilan);
         }

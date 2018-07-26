@@ -132,7 +132,14 @@
                                                                         &#304;lan Detay&#305;n&#305; G&#246;ster
                                                                     </em>
                                                                 </span>
-                                                                <img alt="Antalyada Kiral&#305;k Ev" class="img-responsive" src="/Content/Home/Home2/site_document/urun_img/antalyada-kiralik-ev-1724773383_s.jpg">
+                                                                @foreach (Resim ritem in ViewBag.resim)
+                                                                {
+                                                                    if (ritem.ilanID == ilan.ilanID && ritem.vitrinResim == true)
+                                                                    {
+                                                                        <img alt="Antalyada Kiral&#305;k Ev" class="img-responsive" src="@ritem.resimUrl">
+                                                                    }
+                                                                }
+                                                                
                                                             </span>
                                                         </a>
                                                         <span class="product-thumb-info-content">
